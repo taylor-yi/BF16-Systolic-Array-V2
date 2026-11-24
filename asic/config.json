@@ -1,0 +1,6 @@
+{
+  "DESIGN_NAME": "bf-16-4x4-systolic-array",
+  "VERILOG_FILES": "dir::build/design.v",
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 40
+}
