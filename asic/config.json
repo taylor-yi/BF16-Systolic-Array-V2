@@ -2,5 +2,5 @@
   "DESIGN_NAME": "mini_tpu_top",
   "VERILOG_FILES": "dir::build/design.v",
   "CLOCK_PORT": "clk",
-  "CLOCK_PERIOD": 50
+  "CLOCK_PERIOD": 60
 }
