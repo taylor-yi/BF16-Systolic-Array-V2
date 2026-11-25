@@ -1,0 +1,17 @@
+// DESCRIPTION: Verilator output: Waivers generated with --waiver-output
+
+`verilator_config
+
+// Below are suggested waivers. You have three options:
+//   1. Fix the reason for the linter warning in the Verilog sources
+//   2. Keep the waiver permanently if you are sure it is okay
+//   3. Keep the waiver temporarily to suppress the output
+
+// lint_off -rule WIDTHTRUNC -file "*/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/build/design.v" -match "Operator FUNCREF 'sv2v_cast_5_signed' expects 5 bits on the Function Argument, but Function Argument's SUB generates 32 bits.*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/build/design.v" -match "Bits of signal are not used: 'a_q_flat'[255:240,191:176,127:112,63:48]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/build/design.v" -match "Bits of signal are not used: 'b_q_flat'[255:192]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/build/design.v" -match "Bits of signal are not used: 'fp32_in'[15:0]*"
+

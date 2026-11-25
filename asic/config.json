@@ -1,6 +1,6 @@
 {
-  "DESIGN_NAME": "bf-16-4x4-systolic-array",
+  "DESIGN_NAME": "mini_tpu_top",
   "VERILOG_FILES": "dir::build/design.v",
   "CLOCK_PORT": "clk",
-  "CLOCK_PERIOD": 40
+  "CLOCK_PERIOD": 50
 }

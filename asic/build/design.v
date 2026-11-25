@@ -100,9 +100,9 @@ module controller (
 			state <= next_state;
 	always @(posedge clk or negedge rst)
 		if (!rst)
-			cycle_cnt <= 1'sb0;
+			cycle_cnt <= {CTR_WIDTH {1'b0}};
 		else if (state != next_state)
-			cycle_cnt <= 1'sb0;
+			cycle_cnt <= {CTR_WIDTH {1'b0}};
 		else
 			cycle_cnt <= cycle_cnt + 1'b1;
 	always @(posedge clk or negedge rst)
@@ -510,6 +510,9 @@ module systolic_array (
 	input wire [(N * 16) - 1:0] a_in;
 	input wire [(N * 16) - 1:0] b_in;
 	output wire [(N * 16) - 1:0] result_out;
+	wire [((N * N) * 16) - 1:0] a_q_flat;
+	wire [((N * N) * 16) - 1:0] b_q_flat;
+	wire [((N * N) * 16) - 1:0] res_flat;
 	genvar _gv_r_1;
 	genvar _gv_c_1;
 	generate
@@ -519,23 +522,23 @@ module systolic_array (
 				localparam c = _gv_c_1;
 				wire [15:0] a;
 				wire [15:0] b;
-				reg [15:0] a_q;
-				reg [15:0] b_q;
 				wire [15:0] above;
 				wire [15:0] res;
+				reg [15:0] a_q;
+				reg [15:0] b_q;
 				if (c == 0) begin : a_edge
 					assign a = a_in[16 * r+:16];
 				end
 				else begin : a_mid
-					assign a = row[r].col[c - 1].a_q;
+					assign a = a_q_flat[16 * (((r * N) + c) - 1)+:16];
 				end
 				if (r == 0) begin : b_edge
 					assign b = b_in[16 * c+:16];
 					assign above = 16'h0000;
 				end
 				else begin : b_mid
-					assign b = row[r - 1].col[c].b_q;
-					assign above = row[r - 1].col[c].res;
+					assign b = b_q_flat[16 * (((r - 1) * N) + c)+:16];
+					assign above = res_flat[16 * (((r - 1) * N) + c)+:16];
 				end
 				processing_element pe(
 					.clk(clk),
@@ -557,11 +560,14 @@ module systolic_array (
 						a_q <= a;
 						b_q <= b;
 					end
+				assign a_q_flat[16 * ((r * N) + c)+:16] = a_q;
+				assign b_q_flat[16 * ((r * N) + c)+:16] = b_q;
+				assign res_flat[16 * ((r * N) + c)+:16] = res;
 			end
 		end
 		for (_gv_c_1 = 0; _gv_c_1 < N; _gv_c_1 = _gv_c_1 + 1) begin : out
 			localparam c = _gv_c_1;
-			assign result_out[16 * c+:16] = row[N - 1].col[c].res;
+			assign result_out[16 * c+:16] = res_flat[16 * (((N - 1) * N) + c)+:16];
 		end
 	endgenerate
 endmodule

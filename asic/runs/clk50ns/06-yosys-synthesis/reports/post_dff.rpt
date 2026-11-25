@@ -1,0 +1,40 @@
+129. Printing statistics.
+
+=== mini_tpu_top ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+    39823        - wires
+    41839        - wire bits
+       95        - public wires
+     2111        - public wire bits
+        8        - ports
+      389        - port bits
+    41212 3.89E+04 cells
+     8806        -   $_ANDNOT_
+     1282        -   $_AND_
+     7123        -   $_MUX_
+     1089        -   $_NAND_
+     2707        -   $_NOR_
+     1780        -   $_NOT_
+     1538        -   $_ORNOT_
+    10648        -   $_OR_
+     1426        -   $_XNOR_
+     3332        -   $_XOR_
+     1481 3.89E+04   sky130_fd_sc_hd__dfrtp_2
+
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+
+   Chip area for module '\mini_tpu_top': 38913.571200
+     of which used for sequential elements: 38913.571200 (100.00%)
+

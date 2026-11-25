@@ -29,9 +29,9 @@ module controller #(parameter N = 4) (
 
     always_ff @(posedge clk or negedge rst) begin
         if (!rst)
-            cycle_cnt <= '0;
+            cycle_cnt <= {CTR_WIDTH{1'b0}};
         else if (state != next_state)
-            cycle_cnt <= '0;
+            cycle_cnt <= {CTR_WIDTH{1'b0}};
         else
             cycle_cnt <= cycle_cnt + 1'b1;
     end

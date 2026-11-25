@@ -1,0 +1,1 @@
+netgen -batch source /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/runs/baseline/70-netgen-lvs/lvs_script.lvs
