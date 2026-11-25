@@ -1,7 +1,7 @@
 #!/bin/bash
 # Convert a simple CSV (no commas inside values) to an aligned markdown table.
-# Usage: ./csv2md.sh results.csv            # prints the table
-#        ./csv2md.sh results.csv > results.md
+# Usage: ./tableify.sh results.csv            # prints the table
+#        ./tableify.sh results.csv > results.md
 awk -F',' '
 {
     for (i = 1; i <= NF; i++) {
