@@ -1,0 +1,7 @@
+# LibreLane runs and generated files
+asic/runs/
+asic/build/
+asic/*.log
+
+# macOS clutter
+.DS_Store

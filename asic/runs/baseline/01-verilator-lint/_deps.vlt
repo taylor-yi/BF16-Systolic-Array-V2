@@ -1,5 +1,0 @@
-`verilator_config
-lint_off -rule DECLFILENAME
-lint_off -rule EOFNEWLINE
-lint_off -rule UNDRIVEN -file "/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/runs/baseline/tmp/d8a8e839268549f481a2c3dd610689fa.bb.v"
-lint_off -rule UNUSEDSIGNAL -file "/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/runs/baseline/tmp/d8a8e839268549f481a2c3dd610689fa.bb.v"
