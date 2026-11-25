@@ -2,5 +2,8 @@
   "DESIGN_NAME": "mini_tpu_top",
   "VERILOG_FILES": "dir::build/design.v",
   "CLOCK_PORT": "clk",
-  "CLOCK_PERIOD": 60
+  "CLOCK_PERIOD": 60,
+  "SYNTH_STRATEGY": "DELAY 2",
+  "PL_RESIZER_SETUP_SLACK_MARGIN": 2,
+  "RUN_POST_GRT_RESIZER_TIMING": true
 }
