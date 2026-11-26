@@ -6,19 +6,25 @@
 
 void Vtb_units___024root___ctor_var_reset(Vtb_units___024root* vlSelf);
 
-Vtb_units___024root::Vtb_units___024root(Vtb_units__Syms* symsp, const char* namep)
-    : __VdlySched{*symsp->_vm_contextp__}
- {
-    vlSymsp = symsp;
-    vlNamep = strdup(namep);
+void Vtb_units___024root__ctor(Vtb_units___024root* vlSelf, Vtb_units__Syms* symsp, const char* namep) {
+    vlSelf->vlSymsp = symsp;
+    vlSelf->vlNamep = strdup(namep);
+    // Construct members
+    VL_INPLACE_CONSTRUCT(vlSelf->__Vnontrivs.__VdlySched, *vlSelf->vlSymsp->_vm_contextp__);
     // Reset structure values
-    Vtb_units___024root___ctor_var_reset(this);
+    Vtb_units___024root___ctor_var_reset(vlSelf);
 }
 
-void Vtb_units___024root::__Vconfigure(bool first) {
-    (void)first;  // Prevent unused variable warning
+Vtb_units___024root::Vtb_units___024root(Vtb_units__Syms* symsp, const char* namep) {
+    Vtb_units___024root__ctor(this, symsp, namep);
+}
+
+void Vtb_units___024root__dtor(Vtb_units___024root* vlSelf) {
+    // Destroy members
+    VL_INPLACE_DESTRUCT(vlSelf->__Vnontrivs.__VdlySched);
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlSelf->vlNamep)), vlSelf->vlNamep);
 }
 
 Vtb_units___024root::~Vtb_units___024root() {
-    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
+    Vtb_units___024root__dtor(this);
 }

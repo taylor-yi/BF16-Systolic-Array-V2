@@ -1,6 +1,7 @@
 // IDLE -> LOAD (2N-1 cycles) -> COMPUTE (N cycles) -> DRAIN (N cycles) -> IDLE
 // LOAD streams the inputs through the skew buffers, COMPUTE lets the last
 // values reach PE[N-1][N-1], DRAIN shifts the results out of the array.
+// Pipelined controller needs +1 cycle
 module controller #(parameter N = 4) (
     input  logic clk,
     input  logic rst,

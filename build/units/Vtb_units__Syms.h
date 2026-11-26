@@ -21,18 +21,24 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_units__Syms final : public VerilatedSyms 
   public:
     // INTERNAL STATE
     Vtb_units* const __Vm_modelp;
+    const bool __Vm_isRoot;
+    std::string __Vm_topNames[2];
     VlDeleter __Vm_deleter;
     bool& __Vm_didInit;
 
     // MODULE INSTANCE STATE
-    Vtb_units___024root            TOP;
+    union {
+        struct {
+            Vtb_units___024root            TOP;
+        } vlInst;
+    };
 
     // CONSTRUCTORS
-    Vtb_units__Syms(VerilatedContext* contextp, const char* namep, Vtb_units* modelp);
+    Vtb_units__Syms(VerilatedContext* contextp, Vtb_units* modelp, const char* namep, bool isRoot);
     ~Vtb_units__Syms();
 
     // METHODS
-    const char* name() const { return TOP.vlNamep; }
+    const char* name() const { return vlInst.TOP.vlNamep; }
 };
 
 #endif  // guard

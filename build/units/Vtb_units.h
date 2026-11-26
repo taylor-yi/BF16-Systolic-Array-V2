@@ -52,6 +52,9 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_units VL_NOT_FINAL : public VerilatedMode
   private:
     VL_UNCOPYABLE(Vtb_units);  ///< Copying not allowed
 
+  protected:
+    Vtb_units(VerilatedContext* contextp, const char* name, bool isRoot);
+
   public:
     // API METHODS
     /// Evaluate the model.  Application must call when inputs change.
