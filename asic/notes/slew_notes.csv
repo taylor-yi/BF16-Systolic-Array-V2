@@ -1,0 +1,3 @@
+tag,slew violations,fanout violations,cap violations, notes on what this run fixed
+45ns_piped_no_dly,18624,58,42,first attempt
+45ns_rst_fanous,18490,56,82,attempted to distribute reset more evenly as well as added a 2 flop synchronizer
