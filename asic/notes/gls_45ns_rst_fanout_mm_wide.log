@@ -1,0 +1,2 @@
+PASS: ../vectors/mm_wide.txt  tests=1000  failing=0  bad_cells=0  x_cells=0  max_ulp=0  tol=0
+../tb/tb_mini_tpu.sv:141: $finish called at 190035000 (1ps)
