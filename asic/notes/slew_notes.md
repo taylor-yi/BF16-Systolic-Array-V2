@@ -1,0 +1,5 @@
+| tag               | slew violations | fanout violations | cap violations | notes on what this run fixed                                                     |
+| ----------------- | --------------- | ----------------- | -------------- | -------------------------------------------------------------------------------- |
+| 45ns_piped_no_dly | 18624           | 58                | 42             | first attempt                                                                    |
+| 45ns_rst_fanous   | 18490           | 56                | 82             | attempted to distribute reset more evenly as well as added a 2 flop synchronizer |
+| 45ns_repair_grt   | 15018           | 56                | 33             | somewhat lowered the count but did not fix it yet                                |
