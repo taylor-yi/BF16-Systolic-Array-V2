@@ -15,7 +15,7 @@ module controller #(parameter N = 4) (
     state_t state, next_state;
 
     localparam LOAD_CYCLES    = 2*N - 1;
-    localparam COMPUTE_CYCLES = N;
+    localparam COMPUTE_CYCLES = N + 1;
     localparam CTR_WIDTH      = $clog2(LOAD_CYCLES + COMPUTE_CYCLES + 2);
 
     logic [CTR_WIDTH-1:0] cycle_cnt;

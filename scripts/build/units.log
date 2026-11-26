@@ -1,0 +1,14 @@
+%Error: Cannot find file containing module: 'tb/tb_units.sv'
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.054 for more assistance.
+        ... This may be because there's no search path specified with -I<dir>.
+        ... Looked in:
+             tb/tb_units.sv
+             tb/tb_units.sv.v
+             tb/tb_units.sv.sv
+             build/units/tb/tb_units.sv
+             build/units/tb/tb_units.sv.v
+             build/units/tb/tb_units.sv.sv
+        ... With current working directory '/Users/tayloryi/Documents/bf16-systolic-array-v2/scripts'
+%Error: Cannot find file containing module: 'rtl/bf16_mul.sv'
+%Error: Cannot find file containing module: 'rtl/fp32_add.sv'
+%Error: Exiting due to 3 error(s)

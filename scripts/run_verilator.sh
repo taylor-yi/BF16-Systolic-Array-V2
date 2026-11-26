@@ -3,7 +3,7 @@
 set -e
 mkdir -p build
 verilator --binary --timing -Wno-fatal --top-module tb_units -Mdir build/units -o sim \
-    tb/tb_units.sv rtl/bf16_mul.sv rtl/fp32_add.sv > build/units.log 2>&1
+    tb/tb_units.sv rtl/pipelined/bf16_mul.sv rtl/pipelined/fp32_add.sv > build/units.log 2>&1
 verilator --binary --timing -Wno-fatal --top-module tb_mini_tpu -Mdir build/top -o sim \
     tb/tb_mini_tpu.sv -f scripts/files.f > build/top.log 2>&1
 
