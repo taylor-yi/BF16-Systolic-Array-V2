@@ -1,0 +1,2 @@
+PASS: ../vectors/matmul_vectors.txt  tests=10  failing=0  bad_cells=0  x_cells=0  max_ulp=0  tol=0
+../tb/tb_mini_tpu.sv:141: $finish called at 1935000 (1ps)

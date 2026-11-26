@@ -20,6 +20,9 @@ iverilog -g2012 -DFUNCTIONAL -DUNIT_DELAY=#1 -DGLS -s tb_mini_tpu \
   "$cells/primitives.v" "$cells/sky130_fd_sc_hd.v" \
   "$nl" ../tb/tb_mini_tpu.sv
 
+# echo "Running with $vec"
+# vvp -n build/gls_$tag.vvp +FILE="$vec" +WAVES | tee notes/gls_$tag.log #generate waves
+
+name=$(basename "$vec" .txt)
 echo "Running with $vec"
-# vvp -n build/gls_$tag.vvp +FILE="$vec" | tee notes/gls_$tag.log
-vvp -n build/gls_$tag.vvp +FILE="$vec" +WAVES | tee notes/gls_$tag.log #generate waves
+vvp -n build/gls_$tag.vvp +FILE="$vec" $WAVES | tee notes/gls_${tag}_${name}.log
