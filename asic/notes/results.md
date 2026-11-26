@@ -6,3 +6,4 @@
 | 40ns_piped        | 40       | -5.347      | 0.1044     | 406253        | 698633       | 0   | 0   | clean run worst negative slack still non zero. Attempting to increase clock period with pipelining |
 | 50ns_piped        | 50       | 1.03305     | 0.109      | 406221        | 698633       | 0   | 0   | This one did finally close. Still not optimized though                                             |
 | 40ns_piped_no_dly | 40       | -2.703      | 0.105      | 387352        | 698633       | 0   | 0   | Removing the delay cells did not close at 40 ns. Still moved the needle closer                     |
+| 45ns_piped_no_dly | 45       | 2.297       | 0.105      | 387352        | 698633       | 0   | 0   | Closed and pipelined.                                                                              |

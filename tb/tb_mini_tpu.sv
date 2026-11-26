@@ -20,7 +20,7 @@ module tb_mini_tpu;
     initial begin
         if ($test$plusargs("WAVES")) begin
             $dumpfile("waves.vcd");
-            $dumpvars(0, tb_mini_tpu);   // depth 1: testbench signals + DUT ports only
+            $dumpvars(1, tb_mini_tpu);   // depth 1: testbench signals + DUT ports only
         end
     end
 
