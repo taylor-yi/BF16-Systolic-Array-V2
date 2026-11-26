@@ -7,3 +7,4 @@ rtl/pipelined/systolic_array.sv
 rtl/pipelined/mem_interface.sv
 rtl/pipelined/controller.sv
 rtl/pipelined/mini_tpu_top.sv
+rtl/pipelined/reset_sync.sv

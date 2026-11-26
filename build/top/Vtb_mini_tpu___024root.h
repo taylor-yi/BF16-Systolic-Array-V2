@@ -45,14 +45,28 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_mini_tpu___024root final {
         ::CData/*0:0*/ tb_mini_tpu__DOT__rst;
         ::CData/*0:0*/ tb_mini_tpu__DOT__start;
         ::CData/*0:0*/ tb_mini_tpu__DOT__unnamedblk9__DOT__ok;
+        ::CData/*3:0*/ tb_mini_tpu__DOT__dut__DOT__rst_row;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__3__KET____DOT__u_rst__DOT__rst_out;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__3__KET____DOT__u_rst__DOT__s1;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__2__KET____DOT__u_rst__DOT__rst_out;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__2__KET____DOT__u_rst__DOT__s1;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__1__KET____DOT__u_rst__DOT__rst_out;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__1__KET____DOT__u_rst__DOT__s1;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__0__KET____DOT__u_rst__DOT__rst_out;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__0__KET____DOT__u_rst__DOT__s1;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__rst_out;
+        ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__s1;
         ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_valid;
         ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__drain_q;
         ::CData/*0:0*/ tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__done;
         ::CData/*1:0*/ tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__state;
         ::CData/*3:0*/ tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__cycle_cnt;
-        ::CData/*1:0*/ __Vdly__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__state_62;
+        ::CData/*1:0*/ __Vdly__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__state_72;
         ::CData/*0:0*/ __Vtrigprevexpr___TOP__tb_mini_tpu__DOT__clk__0;
+        ::CData/*0:0*/ __Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst__0;
         ::CData/*0:0*/ __Vtrigprevexpr___TOP__tb_mini_tpu__DOT__rst__0;
+        ::CData/*0:0*/ __Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__rst_out__0;
         ::CData/*0:0*/ __Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__done__0;
         ::SData/*15:0*/ tb_mini_tpu__DOT__C_exp__BRA__0__KET____BRA__0__KET__;
         ::SData/*15:0*/ tb_mini_tpu__DOT__C_exp__BRA__0__KET____BRA__1__KET__;
@@ -91,6 +105,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_mini_tpu___024root final {
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__2__KET____DOT__col__BRA__2__KET____DOT__a_q;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__2__KET____DOT__col__BRA__2__KET____DOT__b_q;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__2__KET____DOT__col__BRA__3__KET____DOT__b_q;
+    };
+    struct {
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__0__KET____DOT__a_q;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__1__KET____DOT__a_q;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__2__KET____DOT__a_q;
@@ -105,8 +121,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_mini_tpu___024root final {
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__2__KET____BRA__0__KET__;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__2__KET____BRA__1__KET__;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__2__KET____BRA__2__KET__;
-    };
-    struct {
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__2__KET____BRA__3__KET__;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__3__KET____BRA__0__KET__;
         ::SData/*15:0*/ tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__3__KET____BRA__1__KET__;

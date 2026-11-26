@@ -1,0 +1,10 @@
+ERROR: File `rtl/bf16_mul.sv' not found or is a directory
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.71+post (git sha1 5628c13240f670b97aaaca3d47940c4afb8ff572, Release, AppleClang clang++ 17.0.0.17000604)
+
+-- Running command `read_verilog -sv rtl/bf16_mul.sv; synth -top bf16_mul -flatten; abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX; stat; ltp -noff' --

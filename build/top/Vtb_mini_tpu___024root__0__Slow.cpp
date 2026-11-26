@@ -27,7 +27,11 @@ VL_ATTR_COLD void Vtb_mini_tpu___024root___eval_static(Vtb_mini_tpu___024root* v
         vlSelfRef.tb_mini_tpu__DOT__unnamedblk9__DOT__ok = 0U;
     }
     vlSelfRef.__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__clk__0 = 0U;
+    vlSelfRef.__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst__0 
+        = vlSelfRef.tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst;
     vlSelfRef.__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__rst__0 = 0U;
+    vlSelfRef.__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__rst_out__0 
+        = vlSelfRef.tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__rst_out;
     vlSelfRef.__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__done__0 
         = vlSelfRef.tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__done;
     Vtb_mini_tpu___024root___timing_ready(vlSelf);
@@ -107,6 +111,15 @@ VL_ATTR_COLD bool Vtb_mini_tpu___024root___eval_stl(Vtb_mini_tpu___024root* vlSe
                                                                     & vlSymsp->vlInst.TOP__tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__1__KET____DOT__pe.__PVT__accumulator) 
                                                                    | (vlSymsp->vlInst.TOP__tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__0__KET____DOT__pe.__PVT__accumulator 
                                                                       >> 0x00000010U)))));
+                    vlSelfRef.tb_mini_tpu__DOT__dut__DOT__rst_row 
+                        = ((((::IData)(vlSelfRef.tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__3__KET____DOT__u_rst__DOT__rst_out) 
+                             << 3U) | ((::IData)(vlSelfRef.tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__2__KET____DOT__u_rst__DOT__rst_out) 
+                                       << 2U)) | (((::IData)(vlSelfRef.tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__1__KET____DOT__u_rst__DOT__rst_out) 
+                                                   << 1U) 
+                                                  | (::IData)(vlSelfRef.tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__0__KET____DOT__u_rst__DOT__rst_out)));
+                    vlSelfRef.tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst 
+                        = (1U & ((::IData)(vlSelfRef.tb_mini_tpu__DOT__dut__DOT__rst_row) 
+                                 >> 3U));
                 }
             }
         }
@@ -236,16 +249,22 @@ VL_ATTR_COLD void Vtb_mini_tpu___024root___dump_triggers__act(const ::VlUnpacked
         VL_DBG_MSGS("         '" + tag + "' region trigger index 0 is active: @(posedge tb_mini_tpu.clk)\n");
     }
     if ((1U & (::IData)((triggers[0U] >> 1U)))) {
-        VL_DBG_MSGS("         '" + tag + "' region trigger index 1 is active: @(negedge tb_mini_tpu.rst)\n");
+        VL_DBG_MSGS("         '" + tag + "' region trigger index 1 is active: @(negedge tb_mini_tpu.dut.u_array.loc_rst)\n");
     }
     if ((1U & (::IData)((triggers[0U] >> 2U)))) {
-        VL_DBG_MSGS("         '" + tag + "' region trigger index 2 is active: @(negedge tb_mini_tpu.clk)\n");
+        VL_DBG_MSGS("         '" + tag + "' region trigger index 2 is active: @(negedge tb_mini_tpu.rst)\n");
     }
     if ((1U & (::IData)((triggers[0U] >> 3U)))) {
-        VL_DBG_MSGS("         '" + tag + "' region trigger index 3 is active: @( tb_mini_tpu.dut.u_ctrl.done)\n");
+        VL_DBG_MSGS("         '" + tag + "' region trigger index 3 is active: @(negedge tb_mini_tpu.dut.u_rst_core.rst_out)\n");
     }
     if ((1U & (::IData)((triggers[0U] >> 4U)))) {
-        VL_DBG_MSGS("         '" + tag + "' region trigger index 4 is active: @([true] __VdlySched.awaitingCurrentTime())\n");
+        VL_DBG_MSGS("         '" + tag + "' region trigger index 4 is active: @(negedge tb_mini_tpu.clk)\n");
+    }
+    if ((1U & (::IData)((triggers[0U] >> 5U)))) {
+        VL_DBG_MSGS("         '" + tag + "' region trigger index 5 is active: @( tb_mini_tpu.dut.u_ctrl.done)\n");
+    }
+    if ((1U & (::IData)((triggers[0U] >> 6U)))) {
+        VL_DBG_MSGS("         '" + tag + "' region trigger index 6 is active: @([true] __VdlySched.awaitingCurrentTime())\n");
     }
 }
 #endif  // VL_DEBUG
@@ -284,7 +303,9 @@ VL_ATTR_COLD void Vtb_mini_tpu___024root___ctor_var_reset(Vtb_mini_tpu___024root
     vlSelf->tb_mini_tpu__DOT__C_exp__BRA__3__KET____BRA__1__KET__ = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 258841856065436229ull);
     vlSelf->tb_mini_tpu__DOT__C_exp__BRA__3__KET____BRA__2__KET__ = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 310846807356493313ull);
     vlSelf->tb_mini_tpu__DOT__C_exp__BRA__3__KET____BRA__3__KET__ = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 18105063077211384460ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__rst_row = VL_SCOPED_RAND_RESET_I(4, __VscopeHash, 2617001360898031693ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__result_out = VL_SCOPED_RAND_RESET_Q(64, __VscopeHash, 18437610831016962101ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 15812387996804058852ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__0__KET____DOT__col__BRA__0__KET____DOT__a_q = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 6498567793254984528ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__0__KET____DOT__col__BRA__0__KET____DOT__b_q = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 7888547795656424765ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__0__KET____DOT__col__BRA__1__KET____DOT__a_q = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 7333745576090650156ull);
@@ -309,6 +330,16 @@ VL_ATTR_COLD void Vtb_mini_tpu___024root___ctor_var_reset(Vtb_mini_tpu___024root
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__0__KET____DOT__a_q = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 2204831964951521579ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__1__KET____DOT__a_q = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 10992634968919208850ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_array__DOT__row__BRA__3__KET____DOT__col__BRA__2__KET____DOT__a_q = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 679647746053368537ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__3__KET____DOT__u_rst__DOT__rst_out = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 3231992483093075454ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__3__KET____DOT__u_rst__DOT__s1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 15885018370324490469ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__2__KET____DOT__u_rst__DOT__rst_out = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 2400762726082299736ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__2__KET____DOT__u_rst__DOT__s1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 147528602538704775ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__1__KET____DOT__u_rst__DOT__rst_out = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 4981117900081781168ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__1__KET____DOT__u_rst__DOT__s1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 17859554711111341568ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__0__KET____DOT__u_rst__DOT__rst_out = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 2525259817503913731ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__genblk1__BRA__0__KET____DOT__u_rst__DOT__s1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 3005774758263153236ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__rst_out = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 17419524291407348622ull);
+    vlSelf->tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__s1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 16107784193205764126ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_valid = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 18235699757492031076ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__0__KET____BRA__0__KET__ = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 16576699707166800725ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_mem__DOT__result_matrix__BRA__0__KET____BRA__1__KET__ = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 14035855570567643182ull);
@@ -350,7 +381,7 @@ VL_ATTR_COLD void Vtb_mini_tpu___024root___ctor_var_reset(Vtb_mini_tpu___024root
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__done = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 9613515621888992442ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__state = VL_SCOPED_RAND_RESET_I(2, __VscopeHash, 6295600492017487341ull);
     vlSelf->tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__cycle_cnt = VL_SCOPED_RAND_RESET_I(4, __VscopeHash, 3633214893511818641ull);
-    vlSelf->__Vdly__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__state_62 = 0;
+    vlSelf->__Vdly__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__state_72 = 0;
     vlSelf->__VstlTriggered[0] = 0;
     VL_UNPACKED_FILL(vlSelf->__VstlTriggered.data(), sizeof(vlSelf->__VstlTriggered[0]), 1);
     vlSelf->__VicoTriggered[0] = 0;
@@ -360,7 +391,9 @@ VL_ATTR_COLD void Vtb_mini_tpu___024root___ctor_var_reset(Vtb_mini_tpu___024root
     vlSelf->__VactTriggeredAcc[0] = 0;
     VL_UNPACKED_FILL(vlSelf->__VactTriggeredAcc.data(), sizeof(vlSelf->__VactTriggeredAcc[0]), 1);
     vlSelf->__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_array__DOT__loc_rst__0 = 0;
     vlSelf->__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__rst__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_rst_core__DOT__rst_out__0 = 0;
     vlSelf->__Vtrigprevexpr___TOP__tb_mini_tpu__DOT__dut__DOT__u_ctrl__DOT__done__0 = 0;
     vlSelf->__VnbaTriggered[0] = 0;
     VL_UNPACKED_FILL(vlSelf->__VnbaTriggered.data(), sizeof(vlSelf->__VnbaTriggered[0]), 1);

@@ -11,12 +11,12 @@ module systolic_array #(parameter N = 4) (
     // Every PE's forwarded A, forwarded B, and result, packed flat.
     // PE[r][c] owns slice 16*(r*N + c).
     logic [N*N*16-1:0] a_q_flat, b_q_flat, res_flat;
-    logic loc_rst;
 
     genvar r, c;
     generate
         for (r = 0; r < N; r++) begin : row
             for (c = 0; c < N; c++) begin : col
+                logic loc_rst;
                 assign loc_rst = rst[r];
                 logic [15:0] a, b, above, res;
                 logic [15:0] a_q, b_q;
@@ -46,7 +46,7 @@ module systolic_array #(parameter N = 4) (
                 );
 
                 always_ff @(posedge clk or negedge loc_rst) begin
-                    if (!rst) begin
+                    if (!loc_rst) begin
                         a_q <= 16'h0000;
                         b_q <= 16'h0000;
                     end else begin
