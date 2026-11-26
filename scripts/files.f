@@ -1,8 +1,9 @@
-rtl/bf16_utils.sv
-rtl/bf16_mul.sv
-rtl/fp32_add.sv
-rtl/processing_element.sv
-rtl/systolic_array.sv
-rtl/mem_interface.sv
-rtl/controller.sv
-rtl/mini_tpu_top.sv
+rtl/pipelined/bf16_utils.sv
+rtl/pipelined/bf16_mul.sv
+rtl/pipelined/fp32_add.sv
+rtl/pipelined/mul_add_register.sv
+rtl/pipelined/processing_element.sv
+rtl/pipelined/systolic_array.sv
+rtl/pipelined/mem_interface.sv
+rtl/pipelined/controller.sv
+rtl/pipelined/mini_tpu_top.sv
