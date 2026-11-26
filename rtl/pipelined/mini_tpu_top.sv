@@ -16,7 +16,7 @@ module mini_tpu_top #(parameter N = 4) (
 
     genvar r;
     generate 
-        for(int r = 0; r < N; r++) begin
+        for(r = 0; r < N; r++) begin
             reset_sync u_rst(.clk(clk), .rst_in(rst), .rst_out(rst_row[r]));
         end
     endgenerate
