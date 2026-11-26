@@ -11,9 +11,21 @@ module mini_tpu_top #(parameter N = 4) (
     logic load_en, array_en, array_clear, drain_en;
     logic [N*16-1:0] a_skewed, b_skewed, result_raw;
 
+    logic [N-1:0] rst_row;
+    logic rst_core;
+
+    genvar r;
+    generate 
+        for(int r = 0; r < N; r++) begin
+            reset_sync u_rst(.clk(clk), .rst_in(rst), .rst_out(rst_row[r]));
+        end
+    endgenerate
+
+    reset_sync u_rst_core (.clk(clk), .rst_in(rst), .rst_out(rst_core));
+
     controller #(.N(N)) u_ctrl (
         .clk         (clk),
-        .rst         (rst),
+        .rst         (rst_core),
         .start       (start),
         .load_en     (load_en),
         .array_en    (array_en),
@@ -24,7 +36,7 @@ module mini_tpu_top #(parameter N = 4) (
 
     mem_interface #(.N(N)) u_mem (
         .clk          (clk),
-        .rst          (rst),
+        .rst          (rst_core),
         .load_en      (load_en),
         .drain_en     (drain_en),
         .a_flat       (a_flat),
@@ -38,7 +50,7 @@ module mini_tpu_top #(parameter N = 4) (
 
     systolic_array #(.N(N)) u_array (
         .clk        (clk),
-        .rst        (rst),
+        .rst        (rst_row),
         .en         (array_en),
         .clear      (array_clear),
         .drain_en   (drain_en),

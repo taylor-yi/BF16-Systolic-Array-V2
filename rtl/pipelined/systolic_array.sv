@@ -1,6 +1,6 @@
 module systolic_array #(parameter N = 4) (
     input  logic                clk,
-    input  logic                rst,
+    input  logic [N - 1:0]      rst,
     input  logic                en,
     input  logic                clear,
     input  logic                drain_en,
@@ -16,6 +16,7 @@ module systolic_array #(parameter N = 4) (
     generate
         for (r = 0; r < N; r++) begin : row
             for (c = 0; c < N; c++) begin : col
+                logic loc_rst = rst[r];
                 logic [15:0] a, b, above, res;
                 logic [15:0] a_q, b_q;
 
@@ -36,7 +37,7 @@ module systolic_array #(parameter N = 4) (
                 end
 
                 processing_element pe (
-                    .clk(clk), .rst(rst), .en(en), .clear(clear),
+                    .clk(clk), .rst(loc_rst), .en(en), .clear(clear),
                     .drain_en(drain_en),
                     .a(a), .b(b),
                     .data_from_above(above),
