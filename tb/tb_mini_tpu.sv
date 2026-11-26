@@ -17,6 +17,13 @@ module tb_mini_tpu;
         mini_tpu_top #(.N(N)) dut (.*);
     `endif
 
+    initial begin
+        if ($test$plusargs("WAVES")) begin
+            $dumpfile("waves.vcd");
+            $dumpvars(0, tb_mini_tpu);   // depth 1: testbench signals + DUT ports only
+        end
+    end
+
     always #5 clk = ~clk;
 
     logic [15:0] A [N][N], B [N][N], C_exp [N][N];
