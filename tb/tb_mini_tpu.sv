@@ -11,7 +11,11 @@ module tb_mini_tpu;
     logic [N*N*16-1:0] result_flat;
     logic              result_valid, done;
 
-    mini_tpu_top #(.N(N)) dut (.*);
+    `ifdef GLS
+        mini_tpu_top dut (.*);
+    `else
+        mini_tpu_top #(.N(N)) dut (.*);
+    `endif
 
     always #5 clk = ~clk;
 
@@ -62,7 +66,11 @@ module tb_mini_tpu;
             @(posedge clk);
             cycles++;
             if (cycles > TIMEOUT) begin
-                $display("FATAL: test %0d timed out, state=%0d", tests, dut.u_ctrl.state);
+                `ifdef GLS
+                    $display("FATAL: test %0d timed out", tests);
+                `else
+                    $display("FATAL: test %0d timed out, state=%0d", tests, dut.u_ctrl.state);
+                `endif
                 $finish;
             end
         end
