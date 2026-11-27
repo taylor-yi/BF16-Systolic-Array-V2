@@ -1,6 +1,6 @@
 {
   "DESIGN_NAME": "mini_tpu_top",
-  "VERILOG_FILES": "dir::build/design.v",
+  "VERILOG_FILES": "dir::build/pe.v",
   "CLOCK_PORT": "clk",
   "CLOCK_PERIOD": 45,
   "SYNTH_STRATEGY": "DELAY 2",
