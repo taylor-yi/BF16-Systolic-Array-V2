@@ -1,2 +1,3 @@
-run tag,closed (y/n),worst setup time (ns),route wire length,die size
-pe_v2_pin_aligned,y,26.9,
+run_tag,closed,setup_ws_max_ss_ns,hold_ws_ns,route_wirelength_um,max_slew_viol,max_cap_viol,cell_area_um2,die_area_um2,drc,lvs,antenna,notes
+pe_v1_baseline,y,8.247,0.132,95195,987,7,23777,35621,0,0,0,auto pin placement - 45 ns clock - FP_CORE_UTIL 70
+pe_v3_pin_aligned,y,8.565,0.130,96380,818,4,23892,35621,0,0,0,custom pin file - metrics from step 103 state_out (final/ overwritten by early GUI open)
