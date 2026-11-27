@@ -10,5 +10,6 @@
   "RUN_POST_GRT_DESIGN_REPAIR": true,
   "IO_PIN_ORDER_CFG": "dir::pe_pin_order.cfg",
   "FP_CORE_UTIL": 70,
-  "PDN_MULTILAYER": false
+  "PDN_MULTILAYER": false,
+  "RT_MAX_LAYER": "met4"
 }

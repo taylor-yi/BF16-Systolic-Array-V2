@@ -14,6 +14,8 @@
   "FP_SIZING": "absolute",
   "DIE_AREA": "0 0 970 1080",
 
+  "PDN_MACRO_CONNECTIONS": ["u_array.*\\.pe VPWR VGND VPWR VGND"],
+
   "MACROS": {
     "processing_element": {
       "gds": ["dir::pe/hardened/gds/processing_element.gds"],
