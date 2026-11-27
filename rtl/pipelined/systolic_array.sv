@@ -42,18 +42,20 @@ module systolic_array #(parameter N = 4) (
                     .drain_en(drain_en),
                     .a(a), .b(b),
                     .data_from_above(above),
-                    .result(res)
+                    .result(res),
+                    .a_out(a_q),
+                    .b_out(b_q)
                 );
 
-                always_ff @(posedge clk or negedge loc_rst) begin
-                    if (!loc_rst) begin
-                        a_q <= 16'h0000;
-                        b_q <= 16'h0000;
-                    end else begin
-                        a_q <= a;
-                        b_q <= b;
-                    end
-                end
+                // always_ff @(posedge clk or negedge loc_rst) begin
+                //     if (!loc_rst) begin
+                //         a_q <= 16'h0000;
+                //         b_q <= 16'h0000;
+                //     end else begin
+                //         a_q <= a;
+                //         b_q <= b;
+                //     end
+                // end
 
                 // Publish this PE's outputs to the flat buses
                 assign a_q_flat[16*(r*N + c) +: 16] = a_q;

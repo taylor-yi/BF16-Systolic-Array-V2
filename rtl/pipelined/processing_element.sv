@@ -7,9 +7,9 @@ module processing_element (
     input  logic [15:0] a,
     input  logic [15:0] b,
     input  logic [15:0] data_from_above,
-    output logic [15:0] result
+    output logic [15:0] result,
     output  logic [15:0] a_out,
-    output  logic [15:0] b_out,
+    output  logic [15:0] b_out
 );
     logic [31:0] product_out, product_in, sum, accumulator, from_above;
     logic skip, en_out, skip_out;
