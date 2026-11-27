@@ -37,6 +37,8 @@ copy "$run/final/metrics.csv"                              "metrics.csv (did the
 copy "$run/resolved.json"                                  "resolved.json"
 copy "$run/*yosys-synthesis/reports/stat.rpt"              "stat.rpt"
 copy "$run/*openroad-stapostpnr/max_ss_100C_1v60/*max*.rpt" "max_ss setup report"
+copy "$run/*netgen-lvs/reports/*"    "LVS reports"
+copy "$run/*magic-drc/reports/*"     "Magic DRC reports"
 
 if [ "$2" = "--delete" ]; then
     if [ -f "$out/${tag}_metrics.csv" ]; then

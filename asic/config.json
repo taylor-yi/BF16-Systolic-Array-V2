@@ -25,22 +25,22 @@
       "lib": {
         "*": ["dir::pe/hardened/lib/nom_tt_025C_1v80/processing_element__nom_tt_025C_1v80.lib"]
       }, "instances": {
-        "u_array.row[0].col[0].pe": { "location": [110, 770], "orientation": "N" },
-        "u_array.row[0].col[1].pe": { "location": [320, 770], "orientation": "N" },
-        "u_array.row[0].col[2].pe": { "location": [530, 770], "orientation": "N" },
-        "u_array.row[0].col[3].pe": { "location": [740, 770], "orientation": "N" },
-        "u_array.row[1].col[0].pe": { "location": [110, 550], "orientation": "N" },
-        "u_array.row[1].col[1].pe": { "location": [320, 550], "orientation": "N" },
-        "u_array.row[1].col[2].pe": { "location": [530, 550], "orientation": "N" },
-        "u_array.row[1].col[3].pe": { "location": [740, 550], "orientation": "N" },
-        "u_array.row[2].col[0].pe": { "location": [110, 330], "orientation": "N" },
-        "u_array.row[2].col[1].pe": { "location": [320, 330], "orientation": "N" },
-        "u_array.row[2].col[2].pe": { "location": [530, 330], "orientation": "N" },
-        "u_array.row[2].col[3].pe": { "location": [740, 330], "orientation": "N" },
-        "u_array.row[3].col[0].pe": { "location": [110, 110], "orientation": "N" },
-        "u_array.row[3].col[1].pe": { "location": [320, 110], "orientation": "N" },
-        "u_array.row[3].col[2].pe": { "location": [530, 110], "orientation": "N" },
-        "u_array.row[3].col[3].pe": { "location": [740, 110], "orientation": "N" }
+          "u_array.row[0].col[0].pe": { "location": [110.40, 769.76], "orientation": "N" },
+          "u_array.row[0].col[1].pe": { "location": [320.62, 769.76], "orientation": "N" },
+          "u_array.row[0].col[2].pe": { "location": [530.84, 769.76], "orientation": "N" },
+          "u_array.row[0].col[3].pe": { "location": [741.06, 769.76], "orientation": "N" },
+          "u_array.row[1].col[0].pe": { "location": [110.40, 549.44], "orientation": "N" },
+          "u_array.row[1].col[1].pe": { "location": [320.62, 549.44], "orientation": "N" },
+          "u_array.row[1].col[2].pe": { "location": [530.84, 549.44], "orientation": "N" },
+          "u_array.row[1].col[3].pe": { "location": [741.06, 549.44], "orientation": "N" },
+          "u_array.row[2].col[0].pe": { "location": [110.40, 329.12], "orientation": "N" },
+          "u_array.row[2].col[1].pe": { "location": [320.62, 329.12], "orientation": "N" },
+          "u_array.row[2].col[2].pe": { "location": [530.84, 329.12], "orientation": "N" },
+          "u_array.row[2].col[3].pe": { "location": [741.06, 329.12], "orientation": "N" },
+          "u_array.row[3].col[0].pe": { "location": [110.40, 108.80], "orientation": "N" },
+          "u_array.row[3].col[1].pe": { "location": [320.62, 108.80], "orientation": "N" },
+          "u_array.row[3].col[2].pe": { "location": [530.84, 108.80], "orientation": "N" },
+          "u_array.row[3].col[3].pe": { "location": [741.06, 108.80], "orientation": "N" }
       }
     }
   }
