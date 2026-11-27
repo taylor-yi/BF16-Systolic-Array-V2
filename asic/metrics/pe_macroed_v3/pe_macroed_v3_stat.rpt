@@ -1,0 +1,45 @@
+115. Printing statistics.
+
+=== mini_tpu_top ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     1788        - wires
+     2169        - wire bits
+     1118        - public wires
+     1499        - public wire bits
+        8        - ports
+      389        - port bits
+     1286 2.25E+04 cells
+       16        -   processing_element
+        1   11.261   sky130_fd_sc_hd__a21boi_2
+        1    8.758   sky130_fd_sc_hd__a21oi_2
+        1   12.512   sky130_fd_sc_hd__a31oi_2
+        1    7.507   sky130_fd_sc_hd__and2_2
+        2   17.517   sky130_fd_sc_hd__and2b_2
+        1    7.507   sky130_fd_sc_hd__and3_2
+        1    10.01   sky130_fd_sc_hd__and4_2
+        8   40.038   sky130_fd_sc_hd__buf_2
+       65  243.984   sky130_fd_sc_hd__conb_1
+      587 1.54E+04   sky130_fd_sc_hd__dfrtp_2
+        2    7.507   sky130_fd_sc_hd__inv_2
+      576 6.49E+03   sky130_fd_sc_hd__mux2_1
+        3   18.768   sky130_fd_sc_hd__nand2_2
+        1   11.261   sky130_fd_sc_hd__nand3b_2
+        1   12.512   sky130_fd_sc_hd__nand4_2
+        1   15.014   sky130_fd_sc_hd__nand4b_2
+        6   37.536   sky130_fd_sc_hd__nor2_2
+        1   12.512   sky130_fd_sc_hd__nor4_2
+        4   40.038   sky130_fd_sc_hd__o211a_2
+        1    10.01   sky130_fd_sc_hd__o21ba_2
+        2   22.522   sky130_fd_sc_hd__o21bai_2
+        1    10.01   sky130_fd_sc_hd__o31a_2
+        2   25.024   sky130_fd_sc_hd__o31ai_2
+        1    6.256   sky130_fd_sc_hd__or2_2
+
+   Area for cell type \processing_element is unknown!
+
+   Chip area for module '\mini_tpu_top': 22497.827200
+     of which used for sequential elements: 15423.542400 (68.56%)
+

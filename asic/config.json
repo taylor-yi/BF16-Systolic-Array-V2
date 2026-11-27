@@ -16,6 +16,8 @@
 
   "PDN_MACRO_CONNECTIONS": ["u_array.*\\.pe VPWR VGND VPWR VGND"],
 
+  "FP_MACRO_HORIZONTAL_HALO": 15,
+
   "MACROS": {
     "processing_element": {
       "gds": ["dir::pe/hardened/gds/processing_element.gds"],
@@ -23,7 +25,9 @@
       "vh":  ["dir::pe/hardened/vh/processing_element.vh"],
       "nl":  ["dir::pe/hardened/nl/processing_element.nl.v"],
       "lib": {
-        "*": ["dir::pe/hardened/lib/nom_tt_025C_1v80/processing_element__nom_tt_025C_1v80.lib"]
+        "*_tt_025C_1v80": ["dir::pe/hardened/lib/nom_tt_025C_1v80/processing_element__nom_tt_025C_1v80.lib"],
+        "*_ss_100C_1v60": ["dir::pe/hardened/lib/nom_ss_100C_1v60/processing_element__nom_ss_100C_1v60.lib"],
+        "*_ff_n40C_1v95": ["dir::pe/hardened/lib/nom_ff_n40C_1v95/processing_element__nom_ff_n40C_1v95.lib"]
       }, "instances": {
           "u_array.row[0].col[0].pe": { "location": [110.40, 769.76], "orientation": "N" },
           "u_array.row[0].col[1].pe": { "location": [320.62, 769.76], "orientation": "N" },
