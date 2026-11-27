@@ -2,6 +2,7 @@
 asic/runs/
 asic/build/
 asic/*.log
+asic/pe/runs/
 
 # macOS clutter
 .DS_Store

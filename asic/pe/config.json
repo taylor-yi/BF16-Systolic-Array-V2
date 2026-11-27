@@ -1,5 +1,5 @@
 {
-  "DESIGN_NAME": "mini_tpu_top",
+  "DESIGN_NAME": "processing_element",
   "VERILOG_FILES": "dir::build/pe.v",
   "CLOCK_PORT": "clk",
   "CLOCK_PERIOD": 45,
@@ -8,7 +8,5 @@
   "RUN_POST_GRT_RESIZER_TIMING": false,
   "EXTRA_EXCLUDED_CELLS": ["sky130_fd_sc_hd__clkdlybuf4s*"],
   "RUN_POST_GRT_DESIGN_REPAIR": true,
-
-  "IO_PIN_ORDER_CFG": "dir::pin_order.cfg",
   "FP_CORE_UTIL": 70
 }
