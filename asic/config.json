@@ -10,5 +10,37 @@
   "RUN_POST_GRT_DESIGN_REPAIR": true,
 
   "IO_PIN_ORDER_CFG": "dir::pin_order.cfg",
-  "FP_CORE_UTIL": 70
+
+  "FP_SIZING": "absolute",
+  "DIE_AREA": "0 0 970 1080",
+
+  "MACROS": {
+    "processing_element": {
+      "gds": ["dir::pe/hardened/gds/processing_element.gds"],
+      "lef": ["dir::pe/hardened/lef/processing_element.lef"],
+      "vh":  ["dir::pe/hardened/vh/processing_element.vh"],
+      "nl":  ["dir::pe/hardened/nl/processing_element.nl.v"],
+      "lib": {
+        "*": ["dir::pe/hardened/lib/nom_tt_025C_1v80/processing_element__nom_tt_025C_1v80.lib"]
+      }, "instances": {
+        "u_array.row[0].col[0].pe": { "location": [110, 770], "orientation": "N" },
+        "u_array.row[0].col[1].pe": { "location": [320, 770], "orientation": "N" },
+        "u_array.row[0].col[2].pe": { "location": [530, 770], "orientation": "N" },
+        "u_array.row[0].col[3].pe": { "location": [740, 770], "orientation": "N" },
+        "u_array.row[1].col[0].pe": { "location": [110, 550], "orientation": "N" },
+        "u_array.row[1].col[1].pe": { "location": [320, 550], "orientation": "N" },
+        "u_array.row[1].col[2].pe": { "location": [530, 550], "orientation": "N" },
+        "u_array.row[1].col[3].pe": { "location": [740, 550], "orientation": "N" },
+        "u_array.row[2].col[0].pe": { "location": [110, 330], "orientation": "N" },
+        "u_array.row[2].col[1].pe": { "location": [320, 330], "orientation": "N" },
+        "u_array.row[2].col[2].pe": { "location": [530, 330], "orientation": "N" },
+        "u_array.row[2].col[3].pe": { "location": [740, 330], "orientation": "N" },
+        "u_array.row[3].col[0].pe": { "location": [110, 110], "orientation": "N" },
+        "u_array.row[3].col[1].pe": { "location": [320, 110], "orientation": "N" },
+        "u_array.row[3].col[2].pe": { "location": [530, 110], "orientation": "N" },
+        "u_array.row[3].col[3].pe": { "location": [740, 110], "orientation": "N" }
+      }
+    }
+  }
+
 }

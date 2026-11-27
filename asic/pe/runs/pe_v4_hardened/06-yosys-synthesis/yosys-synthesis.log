@@ -1,0 +1,1901 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)
+
+1. Executing Liberty frontend: /Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v
+Parsing SystemVerilog input from `/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v' to AST representation.
+Storing AST representation for module `$abstract\fp32_to_bf16'.
+Storing AST representation for module `$abstract\bf16_to_fp32'.
+Storing AST representation for module `$abstract\bf16_mul'.
+Storing AST representation for module `$abstract\fp32_add'.
+Storing AST representation for module `$abstract\mul_add_register'.
+Storing AST representation for module `$abstract\processing_element'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+4. Executing AST frontend in derive mode using pre-parsed AST for module `\processing_element'.
+Generating RTLIL representation for module `\processing_element'.
+
+4.1. Analyzing design hierarchy..
+Top module:  \processing_element
+
+4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\fp32_to_bf16'.
+Generating RTLIL representation for module `\fp32_to_bf16'.
+
+4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\bf16_to_fp32'.
+Generating RTLIL representation for module `\bf16_to_fp32'.
+
+4.4. Executing AST frontend in derive mode using pre-parsed AST for module `\fp32_add'.
+Generating RTLIL representation for module `\fp32_add'.
+
+4.5. Executing AST frontend in derive mode using pre-parsed AST for module `\mul_add_register'.
+Generating RTLIL representation for module `\mul_add_register'.
+
+4.6. Executing AST frontend in derive mode using pre-parsed AST for module `\bf16_mul'.
+Generating RTLIL representation for module `\bf16_mul'.
+
+4.7. Analyzing design hierarchy..
+Top module:  \processing_element
+Used module:     \fp32_to_bf16
+Used module:     \bf16_to_fp32
+Used module:     \fp32_add
+Used module:     \mul_add_register
+Used module:     \bf16_mul
+
+4.8. Analyzing design hierarchy..
+Top module:  \processing_element
+Used module:     \fp32_to_bf16
+Used module:     \bf16_to_fp32
+Used module:     \fp32_add
+Used module:     \mul_add_register
+Used module:     \bf16_mul
+Removing unused module `$abstract\processing_element'.
+Removing unused module `$abstract\mul_add_register'.
+Removing unused module `$abstract\fp32_add'.
+Removing unused module `$abstract\bf16_mul'.
+Removing unused module `$abstract\bf16_to_fp32'.
+Removing unused module `$abstract\fp32_to_bf16'.
+Removed 6 unused modules.
+Renaming module processing_element to processing_element.
+
+5. Executing ATTRMAP pass (move or copy attributes).
+
+6. Executing TRIBUF pass.
+
+7. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1. Analyzing design hierarchy..
+Top module:  \processing_element
+Used module:     \fp32_to_bf16
+Used module:     \bf16_to_fp32
+Used module:     \fp32_add
+Used module:     \mul_add_register
+Used module:     \bf16_mul
+
+7.2. Analyzing design hierarchy..
+Top module:  \processing_element
+Used module:     \fp32_to_bf16
+Used module:     \bf16_to_fp32
+Used module:     \fp32_add
+Used module:     \mul_add_register
+Used module:     \bf16_mul
+Removed 0 unused modules.
+
+8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+Found and cleaned up 1 empty switch in `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133'.
+Cleaned up 2 empty switches.
+
+9. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:290$9 in module processing_element.
+Marked 3 switch rules as full_case in process $proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:281$5 in module processing_element.
+Marked 1 switch rules as full_case in process $proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115 in module mul_add_register.
+Marked 39 switch rules as full_case in process $proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53 in module fp32_add.
+Marked 5 switch rules as full_case in process $proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133 in module bf16_mul.
+Removed a total of 0 dead cases.
+
+10. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 5 redundant assignments.
+Promoted 21 assignments to connections.
+
+11. Executing PROC_INIT pass (extract init attributes).
+
+12. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst in `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:290$9'.
+Found async reset \rst in `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:281$5'.
+Found async reset \rst in `\mul_add_register.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115'.
+
+13. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~47 debug messages>
+
+14. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:290$9'.
+     1/2: $0\b_out[15:0]
+     2/2: $0\a_out[15:0]
+Creating decoders for process `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:281$5'.
+     1/1: $0\accumulator[31:0]
+Creating decoders for process `\mul_add_register.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115'.
+     1/3: $0\skip_out[0:0]
+     2/3: $0\en_out[0:0]
+     3/3: $0\out[31:0]
+Creating decoders for process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:188$114'.
+Creating decoders for process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+     1/50: $8\result[31:0]
+     2/50: $7\result[31:0]
+     3/50: $6\result[31:0]
+     4/50: $5\result[31:0]
+     5/50: $4\result[31:0]
+     6/50: $3\result[31:0]
+     7/50: $2\result[31:0]
+     8/50: $1\result[31:0]
+     9/50: $28\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$100
+    10/50: $27\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$99
+    11/50: $26\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$98
+    12/50: $25\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$97
+    13/50: $24\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$96
+    14/50: $23\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$95
+    15/50: $22\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$94
+    16/50: $21\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$93
+    17/50: $20\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$92
+    18/50: $19\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$91
+    19/50: $18\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$90
+    20/50: $17\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$89
+    21/50: $16\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$88
+    22/50: $15\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$87
+    23/50: $14\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$86
+    24/50: $13\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$85
+    25/50: $12\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$84
+    26/50: $11\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$83
+    27/50: $10\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$82
+    28/50: $9\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$81
+    29/50: $8\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$80
+    30/50: $7\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$79
+    31/50: $6\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$78
+    32/50: $5\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$77
+    33/50: $4\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$76
+    34/50: $3\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$75
+    35/50: $2\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$74
+    36/50: $1\exp[9:0]
+    37/50: $1\norm[26:0]
+    38/50: $1\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.sv2v_autoblock_1.i[31:0]$71
+    39/50: $1\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.x[26:0]$70
+    40/50: $1\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$69
+    41/50: $1\lz[4:0]
+    42/50: $1\sum[27:0]
+    43/50: $1\ms_shift[26:0]
+    44/50: $1\sticky[0:0]
+    45/50: $1\ms[26:0]
+    46/50: $1\ml[26:0]
+    47/50: $1\es[7:0]
+    48/50: $1\el[7:0]
+    49/50: $1\ss[0:0]
+    50/50: $1\sl[0:0]
+Creating decoders for process `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:68$148'.
+Creating decoders for process `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133'.
+     1/5: $5\result[31:0]
+     2/5: $4\result[31:0]
+     3/5: $3\result[31:0]
+     4/5: $2\result[31:0]
+     5/5: $1\result[31:0]
+
+15. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\fp32_add.\_sv2v_0' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:188$114'.
+No latch inferred for signal `\fp32_add.\result' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\sum' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\sl' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\ss' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\el' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\es' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\diff' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\ml' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\ms' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\ms_shift' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\norm' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\lz' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\exp' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\sticky' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+No latch inferred for signal `\fp32_add.\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.x' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+Latch inferred for signal `\fp32_add.\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.sv2v_autoblock_1.i' from process `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53': $auto$proc_dlatch.cc:432:proc_dlatch$517
+No latch inferred for signal `\bf16_mul.\_sv2v_0' from process `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:68$148'.
+No latch inferred for signal `\bf16_mul.\result' from process `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133'.
+No latch inferred for signal `\bf16_mul.\exp' from process `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133'.
+
+16. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\processing_element.\a_out' using process `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:290$9'.
+  created $adff cell `$procdff$530' with positive edge clock and positive level reset.
+Creating register for signal `\processing_element.\b_out' using process `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:290$9'.
+  created $adff cell `$procdff$535' with positive edge clock and positive level reset.
+Creating register for signal `\processing_element.\accumulator' using process `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:281$5'.
+  created $adff cell `$procdff$540' with positive edge clock and positive level reset.
+Creating register for signal `\mul_add_register.\en_out' using process `\mul_add_register.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115'.
+  created $adff cell `$procdff$545' with positive edge clock and positive level reset.
+Creating register for signal `\mul_add_register.\skip_out' using process `\mul_add_register.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115'.
+  created $adff cell `$procdff$550' with positive edge clock and positive level reset.
+Creating register for signal `\mul_add_register.\out' using process `\mul_add_register.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115'.
+  created $adff cell `$procdff$555' with positive edge clock and positive level reset.
+
+17. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+18. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:290$9'.
+Found and cleaned up 3 empty switches in `\processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:281$5'.
+Removing empty process `processing_element.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:281$5'.
+Removing empty process `mul_add_register.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:208$115'.
+Removing empty process `fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:188$114'.
+Found and cleaned up 39 empty switches in `\fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+Removing empty process `fp32_add.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:128$53'.
+Removing empty process `bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:68$148'.
+Found and cleaned up 5 empty switches in `\bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133'.
+Removing empty process `bf16_mul.$proc$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:51$133'.
+Cleaned up 47 empty switches.
+
+19. Executing CHECK pass (checking for obvious problems).
+Checking module processing_element...
+Checking module mul_add_register...
+Checking module fp32_add...
+Checking module bf16_to_fp32...
+Checking module fp32_to_bf16...
+Checking module bf16_mul...
+Found and reported 0 problems.
+
+20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~8 debug messages>
+Optimizing module mul_add_register.
+<suppressed ~6 debug messages>
+Optimizing module fp32_add.
+<suppressed ~12 debug messages>
+Optimizing module bf16_to_fp32.
+Optimizing module fp32_to_bf16.
+Optimizing module bf16_mul.
+<suppressed ~6 debug messages>
+
+21. Executing FLATTEN pass (flatten design).
+Deleting now unused module mul_add_register.
+Deleting now unused module fp32_add.
+Deleting now unused module bf16_to_fp32.
+Deleting now unused module fp32_to_bf16.
+Deleting now unused module bf16_mul.
+<suppressed ~5 debug messages>
+
+22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 15 unused cells and 262 unused wires.
+<suppressed ~19 debug messages>
+
+24. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+25. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 205 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 201 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+26. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$161.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$164.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$167.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$170.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$173.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$176.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$179.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$185.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$188.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$191.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$194.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$197.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$200.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$206.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$209.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$212.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$215.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$218.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$224.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$227.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$230.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$233.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$239.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$242.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$245.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$251.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$254.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$260.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$275.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$281.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$287.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$293.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$299.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$305.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$311.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$317.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$323.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$329.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$335.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$341.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$347.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$353.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$359.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$365.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$371.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$377.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$383.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$389.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$395.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$401.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$407.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$413.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$419.
+    dead port 1/2 on $mux $flatten\u_add.$procmux$425.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$476.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$479.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$482.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$485.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$491.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$494.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$497.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$503.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$506.
+    dead port 1/2 on $mux $flatten\u_mul.$procmux$512.
+Removed 64 multiplexer ports.
+<suppressed ~133 debug messages>
+
+27. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+28. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 137 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+29. Executing OPT_DFF pass (perform DFF optimizations).
+
+30. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 0 unused cells and 68 unused wires.
+<suppressed ~1 debug messages>
+
+31. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+32. Rerunning OPT passes. (Maybe there is more to do…)
+
+33. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+34. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+35. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 137 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+36. Executing OPT_DFF pass (perform DFF optimizations).
+
+37. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+38. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+39. Executing FSM pass (extract and optimize FSM).
+
+39.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+39.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+39.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+39.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+39.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+39.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+39.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+39.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+40. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+41. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 137 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+42. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+43. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+44. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 137 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+45. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$540 ($adff) from module processing_element (D = $0\accumulator[31:0], Q = \accumulator).
+
+46. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+47. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~1 debug messages>
+
+48. Rerunning OPT passes. (Maybe there is more to do…)
+
+49. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+50. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+51. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 141 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+52. Executing OPT_DFF pass (perform DFF optimizations).
+
+53. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+54. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+55. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 5) from port B of cell processing_element.$auto$opt_dff.cc:235:make_patterns_logic$567 ($ne).
+Removed top 9 bits (of 32) from mux cell processing_element.$flatten\u_mul.$procmux$473 ($mux).
+Removed top 23 bits (of 32) from port B of cell processing_element.$flatten\u_mul.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:61$147 ($ge).
+Removed top 31 bits (of 32) from port B of cell processing_element.$flatten\u_mul.$le$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:59$145 ($le).
+Removed top 10 bits (of 11) from mux cell processing_element.$flatten\u_mul.$ternary$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$136 ($mux).
+Removed top 3 bits (of 11) from port B of cell processing_element.$flatten\u_mul.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$135 ($sub).
+Removed top 2 bits (of 11) from port A of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+Removed top 2 bits (of 11) from port B of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+Converting cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add) from signed to unsigned.
+Removed top 1 bits (of 11) from port Y of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+Removed top 1 bits (of 9) from port A of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+Removed top 1 bits (of 9) from port B of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+Removed top 1 bits (of 10) from port Y of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+Removed top 8 bits (of 16) from port A of cell processing_element.$flatten\u_mul.$mul$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:50$132 ($mul).
+Removed top 8 bits (of 16) from port B of cell processing_element.$flatten\u_mul.$mul$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:50$132 ($mul).
+Removed top 1 bits (of 27) from mux cell processing_element.$flatten\u_add.$procmux$458 ($mux).
+Removed top 1 bits (of 27) from mux cell processing_element.$flatten\u_add.$procmux$455 ($mux).
+Removed top 4 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$422 ($mux).
+Removed top 3 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$416 ($mux).
+Removed top 3 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$410 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$404 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$398 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$392 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$386 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$380 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$374 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$368 ($mux).
+Removed top 1 bits (of 5) from mux cell processing_element.$flatten\u_add.$procmux$362 ($mux).
+Removed top 1 bits (of 32) from mux cell processing_element.$flatten\u_add.$procmux$158 ($mux).
+Removed top 23 bits (of 32) from port B of cell processing_element.$flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:183$113 ($ge).
+Removed top 31 bits (of 32) from port B of cell processing_element.$flatten\u_add.$le$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:181$111 ($le).
+Removed top 1 bits (of 10) from port A of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub).
+Removed top 4 bits (of 10) from port B of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub).
+Converting cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub) from signed to unsigned.
+Removed top 1 bits (of 9) from port A of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub).
+Removed top 1 bits (of 6) from port B of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub).
+Removed top 1 bits (of 10) from port Y of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub).
+Removed top 1 bits (of 10) from port A of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add).
+Removed top 8 bits (of 10) from port B of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add).
+Converting cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add) from signed to unsigned.
+Removed top 1 bits (of 9) from port A of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add).
+Removed top 1 bits (of 2) from port B of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add).
+Removed top 1 bits (of 10) from port Y of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add).
+Removed top 26 bits (of 27) from port B of cell processing_element.$flatten\u_add.$or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:161$72 ($or).
+Removed top 1 bits (of 28) from port A of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:158$68 ($sub).
+Removed top 1 bits (of 28) from port B of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:158$68 ($sub).
+Removed top 1 bits (of 28) from port A of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:156$67 ($add).
+Removed top 1 bits (of 28) from port B of cell processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:156$67 ($add).
+Removed top 26 bits (of 27) from port B of cell processing_element.$flatten\u_add.$or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:153$65 ($or).
+Removed top 26 bits (of 27) from port B of cell processing_element.$flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:152$61 ($sub).
+Removed top 26 bits (of 27) from port A of cell processing_element.$flatten\u_add.$shl$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:152$60 ($shl).
+Removed top 27 bits (of 32) from port B of cell processing_element.$flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:149$59 ($ge).
+Removed top 1 bits (of 32) from mux cell processing_element.$flatten\u_mul.$procmux$488 ($mux).
+Removed top 9 bits (of 11) from port B of cell processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$137 ($add).
+Removed top 1 bits (of 32) from mux cell processing_element.$flatten\u_mul.$procmux$500 ($mux).
+Removed top 1 bits (of 32) from mux cell processing_element.$flatten\u_mul.$procmux$509 ($mux).
+Removed top 1 bits (of 5) from wire processing_element.$flatten\u_add.$10\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$82.
+Removed top 1 bits (of 5) from wire processing_element.$flatten\u_add.$11\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$83.
+Removed top 2 bits (of 5) from wire processing_element.$flatten\u_add.$12\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$84.
+Removed top 3 bits (of 5) from wire processing_element.$flatten\u_add.$15\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$87.
+Removed top 4 bits (of 5) from wire processing_element.$flatten\u_add.$2\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$74.
+Removed top 3 bits (of 5) from wire processing_element.$flatten\u_add.$3\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$75.
+Removed top 4 bits (of 5) from wire processing_element.$flatten\u_add.$5\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$77.
+Removed top 26 bits (of 32) from wire processing_element.$flatten\u_add.$5\result[31:0].
+Removed top 1 bits (of 5) from wire processing_element.$flatten\u_add.$9\lzc27$func$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:165$11.$result[4:0]$81.
+Removed top 1 bits (of 10) from wire processing_element.$flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73_Y.
+Removed top 2 bits (of 11) from wire processing_element.$flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134_Y.
+Removed top 10 bits (of 11) from wire processing_element.$flatten\u_mul.$ternary$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$136_Y.
+Removed top 31 bits (of 32) from wire processing_element.product_out.
+
+56. Executing PEEPOPT pass (run peephole optimizers).
+
+57. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 0 unused cells and 13 unused wires.
+<suppressed ~1 debug messages>
+
+58. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module processing_element:
+  creating $macc model for $flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:156$67 ($add).
+  creating $macc model for $flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73 ($add).
+  creating $macc model for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:147$58 ($sub).
+  creating $macc model for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:152$61 ($sub).
+  creating $macc model for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:158$68 ($sub).
+  creating $macc model for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102 ($sub).
+  creating $macc model for $flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134 ($add).
+  creating $macc model for $flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$137 ($add).
+  creating $macc model for $flatten\u_mul.$mul$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:50$132 ($mul).
+  creating $macc model for $flatten\u_mul.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$135 ($sub).
+  merging $macc model for $flatten\u_mul.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$135 into $flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$137.
+  creating $alu model for $macc $flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134.
+  creating $alu model for $macc $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102.
+  creating $alu model for $macc $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:158$68.
+  creating $alu model for $macc $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:152$61.
+  creating $alu model for $macc $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:147$58.
+  creating $alu model for $macc $flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73.
+  creating $alu model for $macc $flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:156$67.
+  creating $macc cell for $flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$137: $auto$alumacc.cc:382:replace_macc$583
+  creating $macc cell for $flatten\u_mul.$mul$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:50$132: $auto$alumacc.cc:382:replace_macc$584
+  creating $alu model for $flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:131$57 ($ge): new $alu
+  creating $alu model for $flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:149$59 ($ge): new $alu
+  creating $alu model for $flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:183$113 ($ge): new $alu
+  creating $alu model for $flatten\u_add.$le$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:181$111 ($le): new $alu
+  creating $alu model for $flatten\u_mul.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:61$147 ($ge): new $alu
+  creating $alu model for $flatten\u_mul.$le$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:59$145 ($le): new $alu
+  creating $alu cell for $flatten\u_mul.$le$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:59$145: $auto$alumacc.cc:512:replace_alu$591
+  creating $alu cell for $flatten\u_mul.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:61$147: $auto$alumacc.cc:512:replace_alu$602
+  creating $alu cell for $flatten\u_add.$le$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:181$111: $auto$alumacc.cc:512:replace_alu$617
+  creating $alu cell for $flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:183$113: $auto$alumacc.cc:512:replace_alu$628
+  creating $alu cell for $flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:149$59: $auto$alumacc.cc:512:replace_alu$643
+  creating $alu cell for $flatten\u_add.$ge$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:131$57: $auto$alumacc.cc:512:replace_alu$656
+  creating $alu cell for $flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:156$67: $auto$alumacc.cc:512:replace_alu$669
+  creating $alu cell for $flatten\u_add.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:162$73: $auto$alumacc.cc:512:replace_alu$672
+  creating $alu cell for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:147$58: $auto$alumacc.cc:512:replace_alu$675
+  creating $alu cell for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:152$61: $auto$alumacc.cc:512:replace_alu$678
+  creating $alu cell for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:158$68: $auto$alumacc.cc:512:replace_alu$681
+  creating $alu cell for $flatten\u_add.$sub$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:167$102: $auto$alumacc.cc:512:replace_alu$684
+  creating $alu cell for $flatten\u_mul.$add$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:54$134: $auto$alumacc.cc:512:replace_alu$687
+  created 13 $alu and 2 $macc cells.
+
+59. Executing SHARE pass (SAT-based resource sharing).
+Found 3 cells in module processing_element that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\u_add.$shr$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:153$64 ($shr):
+    Found 82 activation_patterns using ctrl signal { \u_add.a_zero \u_add.b_zero \u_add.a_inf \u_add.b_inf \u_add.sum [27:1] $flatten\u_add.$logic_or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:169$107_Y $flatten\u_add.$logic_and$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:175$108_Y $flatten\u_add.$logic_or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:181$112_Y $logic_and$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:288$8_Y \drain_en \clear $auto$rtlil.cc:3341:ReduceOr$642 $auto$rtlil.cc:3341:ReduceOr$655 }.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\u_add.$shl$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:166$101 ($shl):
+    Found 2 activation_patterns using ctrl signal { \u_add.a_zero \u_add.b_zero \u_add.a_inf \u_add.b_inf \u_add.sum [27] $flatten\u_add.$logic_or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:169$107_Y $flatten\u_add.$logic_and$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:175$108_Y $flatten\u_add.$logic_or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:181$112_Y $logic_and$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:288$8_Y \drain_en \clear $auto$rtlil.cc:3341:ReduceOr$642 }.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\u_add.$shl$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:152$60 ($shl):
+    Found 82 activation_patterns using ctrl signal { \u_add.a_zero \u_add.b_zero \u_add.a_inf \u_add.b_inf \u_add.sum [27:1] $flatten\u_add.$logic_or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:169$107_Y $flatten\u_add.$logic_and$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:175$108_Y $flatten\u_add.$logic_or$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:181$112_Y $logic_and$/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:288$8_Y \drain_en \clear $auto$rtlil.cc:3341:ReduceOr$642 $auto$rtlil.cc:3341:ReduceOr$655 }.
+    No candidates found.
+
+60. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~6 debug messages>
+
+61. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 169 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+62. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+63. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+64. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 169 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+65. Executing OPT_DFF pass (perform DFF optimizations).
+
+66. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 1 unused cells and 17 unused wires.
+<suppressed ~4 debug messages>
+
+67. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+68. Rerunning OPT passes. (Maybe there is more to do…)
+
+69. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+70. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+71. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 166 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+72. Executing OPT_DFF pass (perform DFF optimizations).
+
+73. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+74. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+75. Executing MEMORY pass.
+
+75.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+75.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+75.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+75.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+75.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+75.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+75.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+75.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+75.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+75.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+76. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+77. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~21 debug messages>
+
+78. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 161 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+79. Executing OPT_DFF pass (perform DFF optimizations).
+
+80. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 0 unused cells and 9 unused wires.
+<suppressed ~1 debug messages>
+
+81. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+82. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+83. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 161 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+84. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $flatten\u_add.$procmux$431: { \u_add.sum [27:2] $auto$opt_expr.cc:205:group_cell_inputs$700 } -> { 1'1 \u_add.sum [26:2] $auto$opt_expr.cc:205:group_cell_inputs$700 }
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~62 debug messages>
+
+85. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+    Consolidated identical input bits for $mux cell $flatten\u_add.$procmux$455:
+      Old ports: A={ \pipeline_register.out [22:0] 3'000 }, B={ \accumulator [22:0] 3'000 }, Y=\u_add.ms [25:0]
+      New ports: A=\pipeline_register.out [22:0], B=\accumulator [22:0], Y=\u_add.ms [25:3]
+      New connections: \u_add.ms [2:0] = 3'000
+    Consolidated identical input bits for $mux cell $flatten\u_add.$procmux$458:
+      Old ports: A={ \accumulator [22:0] 3'000 }, B={ \pipeline_register.out [22:0] 3'000 }, Y=\u_add.ml [25:0]
+      New ports: A=\accumulator [22:0], B=\pipeline_register.out [22:0], Y=\u_add.ml [25:3]
+      New connections: \u_add.ml [2:0] = 3'000
+    Consolidated identical input bits for $mux cell $flatten\u_mul.$procmux$473:
+      Old ports: A={ \u_mul.prod [13:0] 9'000000000 }, B={ \u_mul.prod [14:0] 8'00000000 }, Y=$flatten\u_mul.$5\result[31:0] [22:0]
+      New ports: A={ \u_mul.prod [13:0] 1'0 }, B=\u_mul.prod [14:0], Y=$flatten\u_mul.$5\result[31:0] [22:8]
+      New connections: $flatten\u_mul.$5\result[31:0] [7:0] = 8'00000000
+  Optimizing cells in module \processing_element.
+    Consolidated identical input bits for $mux cell $flatten\u_mul.$procmux$488:
+      Old ports: A={ \u_mul.exp [7:0] $flatten\u_mul.$5\result[31:0] [22:0] }, B=31'1111111100000000000000000000000, Y=$flatten\u_mul.$4\result[31:0] [30:0]
+      New ports: A={ \u_mul.exp [7:0] $flatten\u_mul.$5\result[31:0] [22:8] }, B=23'11111111000000000000000, Y=$flatten\u_mul.$4\result[31:0] [30:8]
+      New connections: $flatten\u_mul.$4\result[31:0] [7:0] = 8'00000000
+  Optimizing cells in module \processing_element.
+    Consolidated identical input bits for $mux cell $flatten\u_mul.$procmux$500:
+      Old ports: A=$flatten\u_mul.$4\result[31:0] [30:0], B=31'0000000000000000000000000000000, Y=$flatten\u_mul.$3\result[31:0] [30:0]
+      New ports: A=$flatten\u_mul.$4\result[31:0] [30:8], B=23'00000000000000000000000, Y=$flatten\u_mul.$3\result[31:0] [30:8]
+      New connections: $flatten\u_mul.$3\result[31:0] [7:0] = 8'00000000
+  Optimizing cells in module \processing_element.
+    Consolidated identical input bits for $mux cell $flatten\u_mul.$procmux$509:
+      Old ports: A=$flatten\u_mul.$3\result[31:0] [30:0], B=31'1111111100000000000000000000000, Y=$flatten\u_mul.$2\result[31:0] [30:0]
+      New ports: A=$flatten\u_mul.$3\result[31:0] [30:8], B=23'11111111000000000000000, Y=$flatten\u_mul.$2\result[31:0] [30:8]
+      New connections: $flatten\u_mul.$2\result[31:0] [7:0] = 8'00000000
+  Optimizing cells in module \processing_element.
+    Consolidated identical input bits for $mux cell $flatten\u_mul.$procmux$515:
+      Old ports: A={ \u_mul.sign $flatten\u_mul.$2\result[31:0] [30:0] }, B=2143289344, Y=\pipeline_register.in
+      New ports: A={ \u_mul.sign $flatten\u_mul.$2\result[31:0] [30:8] }, B=24'011111111100000000000000, Y=\pipeline_register.in [31:8]
+      New connections: \pipeline_register.in [7:0] = 8'00000000
+  Optimizing cells in module \processing_element.
+Performed a total of 7 changes.
+
+86. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 161 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+87. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $flatten\u_add.$procmux$446 in front of them:
+        $auto$alumacc.cc:512:replace_alu$669
+        $auto$alumacc.cc:512:replace_alu$681
+
+88. Executing OPT_DFF pass (perform DFF optimizations).
+
+89. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+90. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~11 debug messages>
+
+91. Rerunning OPT passes. (Maybe there is more to do…)
+
+92. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~62 debug messages>
+
+93. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+94. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 161 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+95. Executing OPT_SHARE pass.
+
+96. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 1 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 2 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 3 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 4 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 5 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 6 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+Setting constant 0-bit at position 7 on $flatten\pipeline_register.$procdff$555 ($adff) from module processing_element.
+
+97. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+98. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~2 debug messages>
+
+99. Rerunning OPT passes. (Maybe there is more to do…)
+
+100. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~62 debug messages>
+
+101. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+102. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 161 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+103. Executing OPT_SHARE pass.
+
+104. Executing OPT_DFF pass (perform DFF optimizations).
+
+105. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+106. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+107. Executing TECHMAP pass (map to technology primitives).
+
+107.1. Executing Verilog-2005 frontend: /nix/store/6s5yppv17pwkdm7m8rsrm6hvpf255c5a-yosys-with-plugins-0.62/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/6s5yppv17pwkdm7m8rsrm6hvpf255c5a-yosys-with-plugins-0.62/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+107.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $mux.
+Running "alumacc" on wrapper $extern:wrap:$neg:A_SIGNED=0:A_WIDTH=28:Y_WIDTH=28:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$neg:A_SIGNED=0:A_WIDTH=28:Y_WIDTH=28:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$neg:A_SIGNED=0:A_WIDTH=28:Y_WIDTH=28:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$4ccbe221165818e15f326ddee3d1183c7924e12f\_90_alu for cells of type $alu.
+Using template $paramod$ee96caa5ff6c189e32bbc182641c7922643956ce\_90_alu for cells of type $alu.
+Using template $paramod$a1bc51c02ce12ac21eb18988e83292af48ed7d72\_90_alu for cells of type $alu.
+Using template $paramod$constmap:55a4a9adcf0fa21a056dba5e2cdb5b7fbf8bf313$paramod$fdacb888ed6231a59d54bc986aa7900ca4b50592\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$d90c3448203144d55644b597072d6cf1b3e54430\_90_alu for cells of type $alu.
+Using template $paramod$a2af9b43308e3114c3b5dd3f4dc3329b2387395d\_90_alu for cells of type $alu.
+Using template $paramod$18758953033a248684fca091132383c69e9b5bef\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$ebf89ea36a793f0f77858f212141d47c833068ad\_90_alu for cells of type $alu.
+Using template $paramod$5d2e07eca6b9fbd538aff231e6f05d9604b7a77e\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$a5842533223e47195ddb862bff55d1034e5662e3\_90_alu for cells of type $alu.
+Using template $paramod$9842bba05edc7546c7482c30270bec058ba4d3ef\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add { 1'1 \a [6:0] } * { 1'1 \b [6:0] } (8x8 bits, unsigned)
+  add { 1'0 $auto$wreduce.cc:514:run$580 [8:0] } (10 bits, signed)
+  add { 1'0 \u_mul.prod [15] } (2 bits, signed)
+  add 11'11110000001 (11 bits, unsigned)
+  packed 1 (1) bits / 1 words into adder tree
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$constmap:0f4b0cadc926aeb33f3d634b4e6818c8bb0e316e$paramod$e7d9c5bff5ffad7b2e57eba57449af102b4d3478\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$constmap:864533964b74e253ce0d39ff66abb7f2ec93db00$paramod$49d681ea06dc393300e89e053fdf6293d075bc05\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod$6df0329addda9228fcc2546de2aaf14ad26c98e1\_90_alu for cells of type $alu.
+Using template $paramod$ec32b97001540459632a2df9accd677d3703ea0f\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001011 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001010 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011111 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011111 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001001 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011011 for cells of type $lcu.
+Using template $paramod$b428551475981eb3841439c41ff02dfe9ed0c0f2\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011100 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~3859 debug messages>
+
+108. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~1835 debug messages>
+
+109. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 2974 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2881 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2848 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2833 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2828 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2826 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2825 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2824 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2823 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+<suppressed ~453 debug messages>
+Removed a total of 151 cells.
+
+110. Executing OPT_DFF pass (perform DFF optimizations).
+
+111. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 183 unused cells and 961 unused wires.
+<suppressed ~184 debug messages>
+
+112. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+113. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 2640 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+114. Executing OPT_DFF pass (perform DFF optimizations).
+
+115. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+116. Executing ABC pass (technology mapping using ABC).
+
+116.1. Extracting gate netlist of module `\processing_element' to `<abc-temp-dir>/input.blif'..
+
+116.1.1. Executed ABC.
+Extracted 2545 gates and 2655 wires to a netlist network with 108 inputs and 58 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library /tmp/yosys-abc-ZmnVL8/stdcells.genlib 
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+116.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       96
+ABC RESULTS:            ANDNOT cells:      545
+ABC RESULTS:               MUX cells:      381
+ABC RESULTS:              NAND cells:       48
+ABC RESULTS:               NOR cells:      194
+ABC RESULTS:               NOT cells:      150
+ABC RESULTS:                OR cells:      649
+ABC RESULTS:             ORNOT cells:      103
+ABC RESULTS:              XNOR cells:      114
+ABC RESULTS:               XOR cells:      187
+ABC RESULTS:        internal signals:     2489
+ABC RESULTS:           input signals:      108
+ABC RESULTS:          output signals:       58
+Removing temp directory.
+Removing global temp directory.
+
+117. Executing OPT pass (performing simple optimizations).
+
+117.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+<suppressed ~14 debug messages>
+
+117.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 2562 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2545 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Computing hashes of 2544 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+<suppressed ~54 debug messages>
+Removed a total of 18 cells.
+
+117.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+117.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 0 unused cells and 840 unused wires.
+<suppressed ~26 debug messages>
+
+117.5. Finished fast OPT passes.
+
+118. Executing HIERARCHY pass (managing design hierarchy).
+
+118.1. Analyzing design hierarchy..
+Top module:  \processing_element
+
+118.2. Analyzing design hierarchy..
+Top module:  \processing_element
+Removed 0 unused modules.
+
+119. Executing CHECK pass (checking for obvious problems).
+Checking module processing_element...
+Found and reported 0 problems.
+
+120. Printing statistics.
+
+=== processing_element ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2446 wires
+     3109 wire bits
+       53 public wires
+      685 public wire bits
+       11 ports
+      101 port bits
+     2544 cells
+      537   $_ANDNOT_
+       96   $_AND_
+       32   $_DFFE_PN0P_
+       58   $_DFF_PN0_
+      381   $_MUX_
+       48   $_NAND_
+      193   $_NOR_
+      150   $_NOT_
+      103   $_ORNOT_
+      646   $_OR_
+      113   $_XNOR_
+      182   $_XOR_
+        5   $scopeinfo
+
+121. Executing OPT pass (performing simple optimizations).
+
+121.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+121.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 2544 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+121.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \processing_element..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+121.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \processing_element.
+Performed a total of 0 changes.
+
+121.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\processing_element'.
+Computing hashes of 2544 cells of `\processing_element'.
+Finding duplicate cells in `\processing_element'.
+Removed a total of 0 cells.
+
+121.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+121.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+
+121.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module processing_element.
+
+121.9. Finished fast OPT passes. (There is nothing left to do.)
+
+122. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 5 unused cells and 34 unused wires.
+<suppressed ~39 debug messages>
+{
+   "creator": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)",
+   "invocation": "stat -json -liberty /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/tmp/5159ea75286747a6b38e0110e51739e4.lib ",
+   "modules": {
+      "\\processing_element": {
+         "num_wires":         2412,
+         "num_wire_bits":     2626,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2539,
+         "num_submodules":       0,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_DFFE_PN0P_": 32,
+            "$_DFF_PN0_": 58,
+            "$_MUX_": 381,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2412,
+         "num_wire_bits":     2626,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2539,
+         "num_submodules":       0,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_DFFE_PN0P_": 32,
+            "$_DFF_PN0_": 58,
+            "$_MUX_": 381,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182
+         }
+      }
+}
+
+123. Printing statistics.
+
+=== processing_element ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2412 wires
+     2626 wire bits
+       19 public wires
+      202 public wire bits
+       11 ports
+      101 port bits
+     2539 cells
+      537   $_ANDNOT_
+       96   $_AND_
+       32   $_DFFE_PN0P_
+       58   $_DFF_PN0_
+      381   $_MUX_
+       48   $_NAND_
+      193   $_NOR_
+      150   $_NOT_
+      103   $_ORNOT_
+      646   $_OR_
+      113   $_XNOR_
+      182   $_XOR_
+
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_DFFE_PN0P_ is unknown!
+   Area for cell type $_DFF_PN0_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+124. Executing TECHMAP pass (map to technology primitives).
+
+124.1. Executing Verilog-2005 frontend: /Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `$_TBUF_'.
+Successfully finished Verilog frontend.
+
+124.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+125. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+126. Executing TECHMAP pass (map to technology primitives).
+
+126.1. Executing Verilog-2005 frontend: /Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/Users/tayloryi/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `$_DLATCH_P_'.
+Generating RTLIL representation for module `$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+126.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+127. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+128. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+128.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\processing_element':
+  mapped 90 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_2 cells.
+{
+   "creator": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)",
+   "invocation": "stat -json -liberty /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/tmp/5159ea75286747a6b38e0110e51739e4.lib ",
+   "modules": {
+      "\\processing_element": {
+         "num_wires":         2444,
+         "num_wire_bits":     2658,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2571,
+         "num_submodules":       0,
+         "area":              2364.768000,
+         "sequential_area":    2364.768000,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_MUX_": 413,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182,
+            "sky130_fd_sc_hd__dfrtp_2": 90
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2444,
+         "num_wire_bits":     2658,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2571,
+         "num_submodules":       0,
+         "area":              2364.768000,
+         "sequential_area":    2364.768000,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_MUX_": 413,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182,
+            "sky130_fd_sc_hd__dfrtp_2": 90
+         }
+      }
+}
+
+129. Printing statistics.
+
+=== processing_element ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     2444        - wires
+     2658        - wire bits
+       19        - public wires
+      202        - public wire bits
+       11        - ports
+      101        - port bits
+     2571 2.36E+03 cells
+      537        -   $_ANDNOT_
+       96        -   $_AND_
+      413        -   $_MUX_
+       48        -   $_NAND_
+      193        -   $_NOR_
+      150        -   $_NOT_
+      103        -   $_ORNOT_
+      646        -   $_OR_
+      113        -   $_XNOR_
+      182        -   $_XOR_
+       90 2.36E+03   sky130_fd_sc_hd__dfrtp_2
+
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+
+   Chip area for module '\processing_element': 2364.768000
+     of which used for sequential elements: 2364.768000 (100.00%)
+
+[INFO] Using generated ABC script '/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/06-yosys-synthesis/DELAY_2.abc'…
+
+130. Executing ABC pass (technology mapping using ABC).
+
+130.1. Extracting gate netlist of module `\processing_element' to `/tmp/yosys-abc-pZEAGh/input.blif'..
+
+130.1.1. Executed ABC.
+Extracted 2481 gates and 2589 wires to a netlist network with 108 inputs and 57 outputs.
+Running ABC script: /tmp/yosys-abc-pZEAGh/abc.script
+ABC: ======== ABC command line "source /tmp/yosys-abc-pZEAGh/abc.script"
+ABC: + read_blif /tmp/yosys-abc-pZEAGh/input.blif 
+ABC: + read_lib -w /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/tmp/5159ea75286747a6b38e0110e51739e4.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/tmp/5159ea75286747a6b38e0110e51739e4.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.03 sec
+ABC: Memory =    9.54 MB. Time =     0.03 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2".
+ABC: Setting output load to be 33.442001.
+ABC: + source /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/06-yosys-synthesis/DELAY_2.abc 
+ABC: Error: The network is combinational.
+ABC: The cell areas are multiplied by the factor: <num_fanins> ^ (0.90).
+ABC: The cell delays are multiplied by the factor: <num_fanins> ^ (0.20).
+ABC: WireLoad = "none"  Gates =   1885 (  3.3 %)   Cap = 11.4 ff (  1.5 %)   Area =    18362.61 ( 93.6 %)   Delay = 12884.21 ps  ( 17.6 %)               
+ABC: Path  0 --       3 : 0    8 pi                         A =   0.00  Df =  86.7  -47.0 ps  S = 127.9 ps  Cin =  0.0 ff  Cout =  26.8 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     644 : 2   29 sky130_fd_sc_hd__xor2_2    A =  16.27  Df =1237.2 -792.6 ps  S =1445.9 ps  Cin =  8.6 ff  Cout = 126.4 ff  Cmax = 130.0 ff  G = 1427  
+ABC: Path  2 --     805 : 4    2 sky130_fd_sc_hd__nand4_2   A =  12.51  Df =5909.8 -752.5 ps  S = 294.2 ps  Cin =  4.4 ff  Cout =   8.9 ff  Cmax = 200.5 ff  G =  199  
+ABC: Path  3 --     806 : 4    2 sky130_fd_sc_hd__o211ai_2  A =  12.51  Df =6050.7 -732.0 ps  S = 176.9 ps  Cin =  4.4 ff  Cout =   7.0 ff  Cmax = 133.7 ff  G =  154  
+ABC: Path  4 --     824 : 3    2 sky130_fd_sc_hd__a21o_2    A =   8.76  Df =6291.3 -801.8 ps  S =  60.6 ps  Cin =  2.4 ff  Cout =   9.2 ff  Cmax = 309.5 ff  G =  377  
+ABC: Path  5 --     826 : 3    1 sky130_fd_sc_hd__nand3_2   A =  10.01  Df =6360.5 -790.7 ps  S =  52.9 ps  Cin =  4.4 ff  Cout =   4.4 ff  Cmax = 260.0 ff  G =   97  
+ABC: Path  6 --     890 : 3    5 sky130_fd_sc_hd__nand3_2   A =  10.01  Df =6478.7 -553.7 ps  S = 132.3 ps  Cin =  4.4 ff  Cout =  21.2 ff  Cmax = 260.0 ff  G =  457  
+ABC: Path  7 --    1078 : 3    7 sky130_fd_sc_hd__nor3_2    A =  10.01  Df =6974.8 -935.7 ps  S = 529.1 ps  Cin =  4.4 ff  Cout =  30.3 ff  Cmax =  92.5 ff  G =  669  
+ABC: Path  8 --    1079 : 2   10 sky130_fd_sc_hd__nand2_2   A =   6.26  Df =7236.7 -231.1 ps  S = 226.3 ps  Cin =  4.4 ff  Cout =  40.7 ff  Cmax = 295.7 ff  G =  883  
+ABC: Path  9 --    1081 : 2    8 sky130_fd_sc_hd__nand2_2   A =   6.26  Df =7452.9 -290.5 ps  S = 168.0 ps  Cin =  4.4 ff  Cout =  27.8 ff  Cmax = 295.7 ff  G =  607  
+ABC: Path 10 --    1271 : 4    3 sky130_fd_sc_hd__o211a_2   A =  10.01  Df =7690.1 -341.6 ps  S =  96.8 ps  Cin =  2.4 ff  Cout =  12.1 ff  Cmax = 268.3 ff  G =  482  
+ABC: Path 11 --    1275 : 3    3 sky130_fd_sc_hd__o21ai_2   A =   8.76  Df =7775.2  -71.1 ps  S = 196.1 ps  Cin =  4.5 ff  Cout =  13.7 ff  Cmax = 139.2 ff  G =  288  
+ABC: Path 12 --    1278 : 4    2 sky130_fd_sc_hd__o22ai_2   A =  12.51  Df =7954.9  -22.7 ps  S = 174.0 ps  Cin =  4.3 ff  Cout =   9.0 ff  Cmax = 137.3 ff  G =  199  
+ABC: Path 13 --    1280 : 4    4 sky130_fd_sc_hd__a22oi_2   A =  12.51  Df =8188.3 -143.8 ps  S = 270.3 ps  Cin =  4.3 ff  Cout =  16.5 ff  Cmax = 170.3 ff  G =  361  
+ABC: Path 14 --    1322 : 3    9 sky130_fd_sc_hd__o21bai_2  A =  11.26  Df =8408.5  -22.8 ps  S = 420.0 ps  Cin =  3.4 ff  Cout =  35.6 ff  Cmax = 140.1 ff  G = 1024  
+ABC: Path 15 --    1366 : 3    2 sky130_fd_sc_hd__a21oi_2   A =   8.76  Df =8593.0  -62.7 ps  S = 150.7 ps  Cin =  4.6 ff  Cout =   9.4 ff  Cmax = 128.2 ff  G =  192  
+ABC: Path 16 --    1370 : 4    1 sky130_fd_sc_hd__o211ai_2  A =  12.51  Df =8690.3   -5.8 ps  S = 128.9 ps  Cin =  4.4 ff  Cout =   4.4 ff  Cmax = 133.7 ff  G =   99  
+ABC: Path 17 --    1372 : 3    8 sky130_fd_sc_hd__nand3_2   A =  10.01  Df =8875.3  -26.9 ps  S = 189.7 ps  Cin =  4.4 ff  Cout =  31.8 ff  Cmax = 260.0 ff  G =  694  
+ABC: Path 18 --    1374 : 4    5 sky130_fd_sc_hd__o211ai_2  A =  12.51  Df =9057.3  -32.4 ps  S = 295.0 ps  Cin =  4.4 ff  Cout =  20.3 ff  Cmax = 133.7 ff  G =  450  
+ABC: Path 19 --    1404 : 4    2 sky130_fd_sc_hd__o211ai_2  A =  12.51  Df =9201.8  -63.8 ps  S = 157.2 ps  Cin =  4.4 ff  Cout =   7.1 ff  Cmax = 133.7 ff  G =  155  
+ABC: Path 20 --    1410 : 3    6 sky130_fd_sc_hd__a21oi_2   A =   8.76  Df =9509.9 -247.1 ps  S = 309.8 ps  Cin =  4.6 ff  Cout =  23.9 ff  Cmax = 128.2 ff  G =  491  
+ABC: Path 21 --    1423 : 3    4 sky130_fd_sc_hd__o21bai_2  A =  11.26  Df =9657.3 -158.7 ps  S = 246.9 ps  Cin =  3.4 ff  Cout =  18.4 ff  Cmax = 140.1 ff  G =  520  
+ABC: Path 22 --    1441 : 4   24 sky130_fd_sc_hd__a22oi_2   A =  12.51  Df =10481.9 -425.6 ps  S =1033.5 ps  Cin =  4.3 ff  Cout =  86.4 ff  Cmax = 170.3 ff  G = 1952  
+ABC: Path 23 --    1608 : 3    9 sky130_fd_sc_hd__and3_2    A =   7.51  Df =10946.2 -525.2 ps  S = 180.1 ps  Cin =  1.5 ff  Cout =  30.5 ff  Cmax = 309.5 ff  G = 1953  
+ABC: Path 24 --    1638 : 3    2 sky130_fd_sc_hd__o21ai_2   A =   8.76  Df =11034.0 -152.6 ps  S = 168.7 ps  Cin =  4.5 ff  Cout =   9.3 ff  Cmax = 139.2 ff  G =  193  
+ABC: Path 25 --    1645 : 3    5 sky130_fd_sc_hd__o21bai_2  A =  11.26  Df =11306.9 -108.2 ps  S = 269.0 ps  Cin =  3.4 ff  Cout =  20.6 ff  Cmax = 140.1 ff  G =  590  
+ABC: Path 26 --    1649 : 3    5 sky130_fd_sc_hd__nand3_2   A =  10.01  Df =11494.8 -147.7 ps  S = 163.7 ps  Cin =  4.4 ff  Cout =  22.8 ff  Cmax = 260.0 ff  G =  491  
+ABC: Path 27 --    1673 : 4    9 sky130_fd_sc_hd__o2bb2ai_2 A =  15.01  Df =11953.3 -316.4 ps  S = 511.3 ps  Cin =  4.6 ff  Cout =  43.1 ff  Cmax = 134.6 ff  G =  877  
+ABC: Path 28 --    1679 : 2    3 sky130_fd_sc_hd__nor2_2    A =   6.26  Df =12053.1 -236.1 ps  S = 156.2 ps  Cin =  4.4 ff  Cout =  11.6 ff  Cmax = 141.9 ff  G =  251  
+ABC: Path 29 --    1744 : 2    7 sky130_fd_sc_hd__nand2_2   A =   6.26  Df =12234.7 -248.5 ps  S = 172.2 ps  Cin =  4.4 ff  Cout =  30.6 ff  Cmax = 295.7 ff  G =  657  
+ABC: Path 30 --    1781 : 4   16 sky130_fd_sc_hd__and4bb_2  A =  12.51  Df =12569.9 -109.0 ps  S = 244.5 ps  Cin =  1.5 ff  Cout =  39.6 ff  Cmax = 270.1 ff  G = 2511  
+ABC: Path 31 --    1785 : 4    1 sky130_fd_sc_hd__a22o_2    A =  10.01  Df =12884.2 -130.5 ps  S = 183.6 ps  Cin =  2.3 ff  Cout =  33.4 ff  Cmax = 301.2 ff  G = 1424  
+ABC: Start-point = pi2 (\pipeline_register.out [23]).  End-point = po25 ($auto$rtlil.cc:3583:MuxGate$10034).
+ABC: netlist                       : i/o =  108/   57  lat =    0  nd =  1885  edge =   6084  area =6577.27  delay =5611.71  lev = 54
+ABC: + write_blif /tmp/yosys-abc-pZEAGh/output.blif 
+
+130.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2111oi_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:       18
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:       52
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:       94
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:       33
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:       44
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2o_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2oi_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__a311o_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:       37
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__a41o_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a41oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:       30
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:       79
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__and4b_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       63
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:      152
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:      102
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:       92
+ABC RESULTS:   sky130_fd_sc_hd__nand4b_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:       80
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2111a_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_2 cells:       29
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_2 cells:       89
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:       39
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:      146
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:       25
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_2 cells:       36
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:       15
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_2 cells:       15
+ABC RESULTS:   sky130_fd_sc_hd__o311a_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:       29
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o32a_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o32ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o41a_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       35
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:       23
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:       35
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or4bb_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:       15
+ABC RESULTS:        internal signals:     2424
+ABC RESULTS:           input signals:      108
+ABC RESULTS:          output signals:       57
+Removing temp directory.
+Removing global temp directory.
+
+131. Executing SETUNDEF pass (replace undef values with defined constants).
+
+132. Executing HILOMAP pass (mapping to constant drivers).
+
+133. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+134. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \processing_element..
+Removed 16 unused cells and 2623 unused wires.
+<suppressed ~35 debug messages>
+
+135. Executing INSBUF pass (insert buffer cells for connected wires).
+Add processing_element/$auto$insbuf.cc:97:execute$12015: \accumulator[16] -> \result [0]
+Add processing_element/$auto$insbuf.cc:97:execute$12016: \accumulator[17] -> \result [1]
+Add processing_element/$auto$insbuf.cc:97:execute$12017: \accumulator[18] -> \result [2]
+Add processing_element/$auto$insbuf.cc:97:execute$12018: \accumulator[19] -> \result [3]
+Add processing_element/$auto$insbuf.cc:97:execute$12019: \accumulator[20] -> \result [4]
+Add processing_element/$auto$insbuf.cc:97:execute$12020: \accumulator[21] -> \result [5]
+Add processing_element/$auto$insbuf.cc:97:execute$12021: \accumulator[22] -> \result [6]
+Add processing_element/$auto$insbuf.cc:97:execute$12022: \accumulator[23] -> \result [7]
+Add processing_element/$auto$insbuf.cc:97:execute$12023: \accumulator[24] -> \result [8]
+Add processing_element/$auto$insbuf.cc:97:execute$12024: \accumulator[25] -> \result [9]
+Add processing_element/$auto$insbuf.cc:97:execute$12025: \accumulator[26] -> \result [10]
+Add processing_element/$auto$insbuf.cc:97:execute$12026: \accumulator[27] -> \result [11]
+Add processing_element/$auto$insbuf.cc:97:execute$12027: \accumulator[28] -> \result [12]
+Add processing_element/$auto$insbuf.cc:97:execute$12028: \accumulator[29] -> \result [13]
+Add processing_element/$auto$insbuf.cc:97:execute$12029: \accumulator[30] -> \result [14]
+Add processing_element/$auto$insbuf.cc:97:execute$12030: \accumulator[31] -> \result [15]
+
+136. Executing CHECK pass (checking for obvious problems).
+Checking module processing_element...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)",
+   "invocation": "stat -json -liberty /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v4_hardened/tmp/5159ea75286747a6b38e0110e51739e4.lib ",
+   "modules": {
+      "\\processing_element": {
+         "num_wires":         1954,
+         "num_wire_bits":     2044,
+         "num_pub_wires":     94,
+         "num_pub_wire_bits": 184,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1991,
+         "num_submodules":       0,
+         "area":              20807.456000,
+         "sequential_area":    2364.768000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a2111oi_2": 3,
+            "sky130_fd_sc_hd__a211o_2": 32,
+            "sky130_fd_sc_hd__a211oi_2": 13,
+            "sky130_fd_sc_hd__a21bo_2": 18,
+            "sky130_fd_sc_hd__a21boi_2": 7,
+            "sky130_fd_sc_hd__a21o_2": 52,
+            "sky130_fd_sc_hd__a21oi_2": 94,
+            "sky130_fd_sc_hd__a221o_2": 8,
+            "sky130_fd_sc_hd__a221oi_2": 2,
+            "sky130_fd_sc_hd__a22o_2": 33,
+            "sky130_fd_sc_hd__a22oi_2": 44,
+            "sky130_fd_sc_hd__a2bb2o_2": 13,
+            "sky130_fd_sc_hd__a2bb2oi_2": 9,
+            "sky130_fd_sc_hd__a311o_2": 8,
+            "sky130_fd_sc_hd__a311oi_2": 2,
+            "sky130_fd_sc_hd__a31o_2": 37,
+            "sky130_fd_sc_hd__a31oi_2": 19,
+            "sky130_fd_sc_hd__a32o_2": 17,
+            "sky130_fd_sc_hd__a41o_2": 3,
+            "sky130_fd_sc_hd__a41oi_2": 2,
+            "sky130_fd_sc_hd__and2_2": 30,
+            "sky130_fd_sc_hd__and2b_2": 12,
+            "sky130_fd_sc_hd__and3_2": 79,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 24,
+            "sky130_fd_sc_hd__and4b_2": 6,
+            "sky130_fd_sc_hd__and4bb_2": 10,
+            "sky130_fd_sc_hd__buf_2": 16,
+            "sky130_fd_sc_hd__dfrtp_2": 90,
+            "sky130_fd_sc_hd__inv_2": 63,
+            "sky130_fd_sc_hd__mux2_1": 32,
+            "sky130_fd_sc_hd__nand2_2": 152,
+            "sky130_fd_sc_hd__nand2b_2": 26,
+            "sky130_fd_sc_hd__nand3_2": 102,
+            "sky130_fd_sc_hd__nand3b_2": 8,
+            "sky130_fd_sc_hd__nand4_2": 92,
+            "sky130_fd_sc_hd__nand4b_2": 6,
+            "sky130_fd_sc_hd__nor2_2": 80,
+            "sky130_fd_sc_hd__nor3_2": 13,
+            "sky130_fd_sc_hd__nor3b_2": 4,
+            "sky130_fd_sc_hd__nor4_2": 8,
+            "sky130_fd_sc_hd__nor4b_2": 1,
+            "sky130_fd_sc_hd__o2111a_2": 6,
+            "sky130_fd_sc_hd__o2111ai_2": 29,
+            "sky130_fd_sc_hd__o211a_2": 34,
+            "sky130_fd_sc_hd__o211ai_2": 89,
+            "sky130_fd_sc_hd__o21a_2": 39,
+            "sky130_fd_sc_hd__o21ai_2": 146,
+            "sky130_fd_sc_hd__o21ba_2": 4,
+            "sky130_fd_sc_hd__o21bai_2": 25,
+            "sky130_fd_sc_hd__o221a_2": 28,
+            "sky130_fd_sc_hd__o221ai_2": 17,
+            "sky130_fd_sc_hd__o22a_2": 11,
+            "sky130_fd_sc_hd__o22ai_2": 36,
+            "sky130_fd_sc_hd__o2bb2a_2": 15,
+            "sky130_fd_sc_hd__o2bb2ai_2": 15,
+            "sky130_fd_sc_hd__o311a_2": 17,
+            "sky130_fd_sc_hd__o311ai_2": 3,
+            "sky130_fd_sc_hd__o31a_2": 29,
+            "sky130_fd_sc_hd__o31ai_2": 6,
+            "sky130_fd_sc_hd__o32a_2": 4,
+            "sky130_fd_sc_hd__o32ai_2": 1,
+            "sky130_fd_sc_hd__o41a_2": 2,
+            "sky130_fd_sc_hd__or2_2": 35,
+            "sky130_fd_sc_hd__or3_2": 23,
+            "sky130_fd_sc_hd__or3b_2": 17,
+            "sky130_fd_sc_hd__or4_2": 35,
+            "sky130_fd_sc_hd__or4b_2": 2,
+            "sky130_fd_sc_hd__or4bb_2": 6,
+            "sky130_fd_sc_hd__xnor2_2": 26,
+            "sky130_fd_sc_hd__xor2_2": 15
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1954,
+         "num_wire_bits":     2044,
+         "num_pub_wires":     94,
+         "num_pub_wire_bits": 184,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1991,
+         "num_submodules":       0,
+         "area":              20807.456000,
+         "sequential_area":    2364.768000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a2111oi_2": 3,
+            "sky130_fd_sc_hd__a211o_2": 32,
+            "sky130_fd_sc_hd__a211oi_2": 13,
+            "sky130_fd_sc_hd__a21bo_2": 18,
+            "sky130_fd_sc_hd__a21boi_2": 7,
+            "sky130_fd_sc_hd__a21o_2": 52,
+            "sky130_fd_sc_hd__a21oi_2": 94,
+            "sky130_fd_sc_hd__a221o_2": 8,
+            "sky130_fd_sc_hd__a221oi_2": 2,
+            "sky130_fd_sc_hd__a22o_2": 33,
+            "sky130_fd_sc_hd__a22oi_2": 44,
+            "sky130_fd_sc_hd__a2bb2o_2": 13,
+            "sky130_fd_sc_hd__a2bb2oi_2": 9,
+            "sky130_fd_sc_hd__a311o_2": 8,
+            "sky130_fd_sc_hd__a311oi_2": 2,
+            "sky130_fd_sc_hd__a31o_2": 37,
+            "sky130_fd_sc_hd__a31oi_2": 19,
+            "sky130_fd_sc_hd__a32o_2": 17,
+            "sky130_fd_sc_hd__a41o_2": 3,
+            "sky130_fd_sc_hd__a41oi_2": 2,
+            "sky130_fd_sc_hd__and2_2": 30,
+            "sky130_fd_sc_hd__and2b_2": 12,
+            "sky130_fd_sc_hd__and3_2": 79,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 24,
+            "sky130_fd_sc_hd__and4b_2": 6,
+            "sky130_fd_sc_hd__and4bb_2": 10,
+            "sky130_fd_sc_hd__buf_2": 16,
+            "sky130_fd_sc_hd__dfrtp_2": 90,
+            "sky130_fd_sc_hd__inv_2": 63,
+            "sky130_fd_sc_hd__mux2_1": 32,
+            "sky130_fd_sc_hd__nand2_2": 152,
+            "sky130_fd_sc_hd__nand2b_2": 26,
+            "sky130_fd_sc_hd__nand3_2": 102,
+            "sky130_fd_sc_hd__nand3b_2": 8,
+            "sky130_fd_sc_hd__nand4_2": 92,
+            "sky130_fd_sc_hd__nand4b_2": 6,
+            "sky130_fd_sc_hd__nor2_2": 80,
+            "sky130_fd_sc_hd__nor3_2": 13,
+            "sky130_fd_sc_hd__nor3b_2": 4,
+            "sky130_fd_sc_hd__nor4_2": 8,
+            "sky130_fd_sc_hd__nor4b_2": 1,
+            "sky130_fd_sc_hd__o2111a_2": 6,
+            "sky130_fd_sc_hd__o2111ai_2": 29,
+            "sky130_fd_sc_hd__o211a_2": 34,
+            "sky130_fd_sc_hd__o211ai_2": 89,
+            "sky130_fd_sc_hd__o21a_2": 39,
+            "sky130_fd_sc_hd__o21ai_2": 146,
+            "sky130_fd_sc_hd__o21ba_2": 4,
+            "sky130_fd_sc_hd__o21bai_2": 25,
+            "sky130_fd_sc_hd__o221a_2": 28,
+            "sky130_fd_sc_hd__o221ai_2": 17,
+            "sky130_fd_sc_hd__o22a_2": 11,
+            "sky130_fd_sc_hd__o22ai_2": 36,
+            "sky130_fd_sc_hd__o2bb2a_2": 15,
+            "sky130_fd_sc_hd__o2bb2ai_2": 15,
+            "sky130_fd_sc_hd__o311a_2": 17,
+            "sky130_fd_sc_hd__o311ai_2": 3,
+            "sky130_fd_sc_hd__o31a_2": 29,
+            "sky130_fd_sc_hd__o31ai_2": 6,
+            "sky130_fd_sc_hd__o32a_2": 4,
+            "sky130_fd_sc_hd__o32ai_2": 1,
+            "sky130_fd_sc_hd__o41a_2": 2,
+            "sky130_fd_sc_hd__or2_2": 35,
+            "sky130_fd_sc_hd__or3_2": 23,
+            "sky130_fd_sc_hd__or3b_2": 17,
+            "sky130_fd_sc_hd__or4_2": 35,
+            "sky130_fd_sc_hd__or4b_2": 2,
+            "sky130_fd_sc_hd__or4bb_2": 6,
+            "sky130_fd_sc_hd__xnor2_2": 26,
+            "sky130_fd_sc_hd__xor2_2": 15
+         }
+      }
+}
+
+137. Printing statistics.
+
+=== processing_element ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     1954        - wires
+     2044        - wire bits
+       94        - public wires
+      184        - public wire bits
+       11        - ports
+      101        - port bits
+     1991 2.08E+04 cells
+        1   12.512   sky130_fd_sc_hd__a2111o_2
+        3   45.043   sky130_fd_sc_hd__a2111oi_2
+       32  320.307   sky130_fd_sc_hd__a211o_2
+       13  162.656   sky130_fd_sc_hd__a211oi_2
+       18  180.173   sky130_fd_sc_hd__a21bo_2
+        7   78.826   sky130_fd_sc_hd__a21boi_2
+       52  455.437   sky130_fd_sc_hd__a21o_2
+       94   823.29   sky130_fd_sc_hd__a21oi_2
+        8   90.086   sky130_fd_sc_hd__a221o_2
+        2   30.029   sky130_fd_sc_hd__a221oi_2
+       33  330.317   sky130_fd_sc_hd__a22o_2
+       44  550.528   sky130_fd_sc_hd__a22oi_2
+       13   146.39   sky130_fd_sc_hd__a2bb2o_2
+        9   135.13   sky130_fd_sc_hd__a2bb2oi_2
+        8   90.086   sky130_fd_sc_hd__a311o_2
+        2   30.029   sky130_fd_sc_hd__a311oi_2
+       37  324.061   sky130_fd_sc_hd__a31o_2
+       19  237.728   sky130_fd_sc_hd__a31oi_2
+       17  191.434   sky130_fd_sc_hd__a32o_2
+        3   33.782   sky130_fd_sc_hd__a41o_2
+        2   32.531   sky130_fd_sc_hd__a41oi_2
+       30  225.216   sky130_fd_sc_hd__and2_2
+       12  105.101   sky130_fd_sc_hd__and2b_2
+       79  593.069   sky130_fd_sc_hd__and3_2
+        5   50.048   sky130_fd_sc_hd__and3b_2
+       24   240.23   sky130_fd_sc_hd__and4_2
+        6   67.565   sky130_fd_sc_hd__and4b_2
+       10   125.12   sky130_fd_sc_hd__and4bb_2
+       16   80.077   sky130_fd_sc_hd__buf_2
+       90 2.36E+03   sky130_fd_sc_hd__dfrtp_2
+       63  236.477   sky130_fd_sc_hd__inv_2
+       32  360.346   sky130_fd_sc_hd__mux2_1
+      152  950.912   sky130_fd_sc_hd__nand2_2
+       26  227.718   sky130_fd_sc_hd__nand2b_2
+      102 1.02E+03   sky130_fd_sc_hd__nand3_2
+        8   90.086   sky130_fd_sc_hd__nand3b_2
+       92 1.15E+03   sky130_fd_sc_hd__nand4_2
+        6   90.086   sky130_fd_sc_hd__nand4b_2
+       80   500.48   sky130_fd_sc_hd__nor2_2
+       13  130.125   sky130_fd_sc_hd__nor3_2
+        4   50.048   sky130_fd_sc_hd__nor3b_2
+        8  100.096   sky130_fd_sc_hd__nor4_2
+        1   15.014   sky130_fd_sc_hd__nor4b_2
+        6   75.072   sky130_fd_sc_hd__o2111a_2
+       29  435.418   sky130_fd_sc_hd__o2111ai_2
+       34  340.326   sky130_fd_sc_hd__o211a_2
+       89 1.11E+03   sky130_fd_sc_hd__o211ai_2
+       39  341.578   sky130_fd_sc_hd__o21a_2
+      146 1.28E+03   sky130_fd_sc_hd__o21ai_2
+        4   40.038   sky130_fd_sc_hd__o21ba_2
+       25   281.52   sky130_fd_sc_hd__o21bai_2
+       28  315.302   sky130_fd_sc_hd__o221a_2
+       17  255.245   sky130_fd_sc_hd__o221ai_2
+       11  110.106   sky130_fd_sc_hd__o22a_2
+       36  450.432   sky130_fd_sc_hd__o22ai_2
+       15  168.912   sky130_fd_sc_hd__o2bb2a_2
+       15  225.216   sky130_fd_sc_hd__o2bb2ai_2
+       17  191.434   sky130_fd_sc_hd__o311a_2
+        3   48.797   sky130_fd_sc_hd__o311ai_2
+       29  290.278   sky130_fd_sc_hd__o31a_2
+        6   75.072   sky130_fd_sc_hd__o31ai_2
+        4   45.043   sky130_fd_sc_hd__o32a_2
+        1   16.266   sky130_fd_sc_hd__o32ai_2
+        2   25.024   sky130_fd_sc_hd__o41a_2
+       35   218.96   sky130_fd_sc_hd__or2_2
+       23  172.666   sky130_fd_sc_hd__or3_2
+       17  148.893   sky130_fd_sc_hd__or3b_2
+       35  306.544   sky130_fd_sc_hd__or4_2
+        2   20.019   sky130_fd_sc_hd__or4b_2
+        6   75.072   sky130_fd_sc_hd__or4bb_2
+       26  422.906   sky130_fd_sc_hd__xnor2_2
+       15  243.984   sky130_fd_sc_hd__xor2_2
+
+   Chip area for module '\processing_element': 20807.456000
+     of which used for sequential elements: 2364.768000 (11.37%)
+
+138. Executing Verilog backend.
+Dumping module `\processing_element'.
+
+139. Executing JSON backend.
