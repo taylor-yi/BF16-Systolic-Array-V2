@@ -1,0 +1,61 @@
+{
+   "creator": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)",
+   "invocation": "stat -json -liberty /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v2_pin_aligned/tmp/53dcbd50571f4803a918809d9e72e838.lib ",
+   "modules": {
+      "\\processing_element": {
+         "num_wires":         2412,
+         "num_wire_bits":     2626,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2539,
+         "num_submodules":       0,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_DFFE_PN0P_": 32,
+            "$_DFF_PN0_": 58,
+            "$_MUX_": 381,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2412,
+         "num_wire_bits":     2626,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2539,
+         "num_submodules":       0,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_DFFE_PN0P_": 32,
+            "$_DFF_PN0_": 58,
+            "$_MUX_": 381,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182
+         }
+      }
+}
+

@@ -1,0 +1,14 @@
+{
+    "json_h": "/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v1/05-yosys-jsonheader/processing_element.h.json",
+    "nl": "/Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v1/06-yosys-synthesis/processing_element.nl.v",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 2,
+        "design__inferred_latch__count": 0,
+        "design__instance__count": 1991,
+        "design__instance__area": 20807.456,
+        "design__instance_unmapped__count": 0,
+        "synthesis__check_error__count": 0
+    }
+}

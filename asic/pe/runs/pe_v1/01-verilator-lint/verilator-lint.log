@@ -1,0 +1,15 @@
+%Warning-WIDTHTRUNC: /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:111:15: Operator FUNCREF 'sv2v_cast_5_signed' expects 5 bits on the Function Argument, but Function Argument's SUB generates 32 bits.
+                                                                                               : ... note: In instance 'processing_element.u_add'
+  111 |       lzc27 = sv2v_cast_5_signed(26 - i);
+      |               ^~~~~~~~~~~~~~~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.044
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/build/pe.v:5:20: Bits of signal are not used: 'fp32_in'[15:0]
+                                                                                               : ... note: In instance 'processing_element.u_narr'
+    5 |  input wire [31:0] fp32_in;
+      |                    ^~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.044
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+- V e r i l a t i o n   R e p o r t: Verilator 5.044 2026-01-01 rev v5.040
+- Verilator: Built from 0.408 MB sources in 453 modules, into 0.070 MB in 3 C++ files needing 0.000 MB
+- Verilator: Walltime 0.051 s (elab=0.014, cvt=0.012, bld=0.000); cpu 0.039 s on 1 threads; alloced 19.859 MB

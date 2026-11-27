@@ -1,0 +1,63 @@
+{
+   "creator": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)",
+   "invocation": "stat -json -liberty /Users/tayloryi/Documents/bf16-systolic-array-v2/asic/pe/runs/pe_v2_pin_aligned/tmp/a3050e71e2694afcbd82afa9a436079b.lib ",
+   "modules": {
+      "\\processing_element": {
+         "num_wires":         2444,
+         "num_wire_bits":     2658,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2571,
+         "num_submodules":       0,
+         "area":              2364.768000,
+         "sequential_area":    2364.768000,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_MUX_": 413,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182,
+            "sky130_fd_sc_hd__dfrtp_2": 90
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2444,
+         "num_wire_bits":     2658,
+         "num_pub_wires":     19,
+         "num_pub_wire_bits": 202,
+         "num_ports":         11,
+         "num_port_bits":     101,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2571,
+         "num_submodules":       0,
+         "area":              2364.768000,
+         "sequential_area":    2364.768000,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 537,
+            "$_AND_": 96,
+            "$_MUX_": 413,
+            "$_NAND_": 48,
+            "$_NOR_": 193,
+            "$_NOT_": 150,
+            "$_ORNOT_": 103,
+            "$_OR_": 646,
+            "$_XNOR_": 113,
+            "$_XOR_": 182,
+            "sky130_fd_sc_hd__dfrtp_2": 90
+         }
+      }
+}
+
