@@ -8,6 +8,8 @@ module processing_element (
     input  logic [15:0] b,
     input  logic [15:0] data_from_above,
     output logic [15:0] result
+    output  logic [15:0] a_out,
+    output  logic [15:0] b_out,
 );
     logic [31:0] product_out, product_in, sum, accumulator, from_above;
     logic skip, en_out, skip_out;
@@ -30,5 +32,15 @@ module processing_element (
             accumulator <= from_above;
         else if (en_out && !skip_out)
             accumulator <= sum;
+    end
+
+    always_ff @(posedge clk or negedge rst) begin
+        if (!rst) begin
+            a_out <= 16'h0000;
+            b_out <= 16'h0000;
+        end else begin
+            a_out <= a;
+            b_out <= b;
+        end
     end
 endmodule
