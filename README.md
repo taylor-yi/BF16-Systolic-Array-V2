@@ -1,6 +1,10 @@
-# Mini TPU: 4x4 BF16 Systolic Array
+# Pipelined 4x4 BF16 Systolic Array
 
-A 4x4 output-stationary systolic array that multiplies BF16 matrices. Each PE does an exact BF16 x BF16 multiply and accumulates in FP32, and the results come out as BF16.
+A 4x4 output-stationary systolic array that multiplies BF16 matrices. Each PE does an exact BF16 x BF16 multiply and accumulates in FP32, and the results come out as BF16. This version was taken to GDSII using LibreLane.
+
+## ASIC Notes
+
+- Timing closed at 
 
 ## Architecture
 
