@@ -1,9 +1,3 @@
-%Warning-WIDTHTRUNC: rtl/pipelined/systolic_array.sv:49:25: Logical operator LOGNOT expects 1 bit on the LHS, but LHS's VARREF 'rst' generates 4 bits.
-                                                          : ... note: In instance 'tb_mini_tpu.dut.u_array'
-   49 |                     if (!rst) begin
-      |                         ^
-                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.054
-                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
 %Warning-WIDTHEXPAND: tb/tb_mini_tpu.sv:36:50: Operator SUB expects 32 bits on the LHS, but LHS's SEL generates 15 bits.
                                              : ... note: In instance 'tb_mini_tpu'
    36 |             return (x[14:0] > y[14:0]) ? x[14:0] - y[14:0] : y[14:0] - x[14:0];
@@ -26,15 +20,8 @@
                                             : ... note: In instance 'tb_mini_tpu'
   103 |         if (errs) begin
       |         ^~
-%Warning-MULTIDRIVEN: rtl/pipelined/systolic_array.sv:14:11: Bit [0] of signal 'tb_mini_tpu.dut.u_array.loc_rst' have multiple combinational drivers. This can cause performance degradation.
-                      rtl/pipelined/systolic_array.sv:20:32: ... Location of offending driver
-   20 |                 assign loc_rst = rst[r];
-      |                                ^
-                      rtl/pipelined/systolic_array.sv:20:32: ... Location of offending driver
-   20 |                 assign loc_rst = rst[r];
-      |                                ^
-                      ... For warning description see https://verilator.org/warn/MULTIDRIVEN?v=5.054
-                      ... Use "/* verilator lint_off MULTIDRIVEN */" and lint_on around source to disable this message.
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.054
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
 c++ -Os  -I.  -MMD -I/opt/homebrew/Cellar/verilator/5.054/share/verilator/include -I/opt/homebrew/Cellar/verilator/5.054/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -DVM_VPI=0 -faligned-new -fbracket-depth=4096 -fcf-protection=none -Xclang -fno-pch-timestamp -Qunused-arguments -Wno-bool-operation -Wno-c++11-narrowing -Wno-constant-logical-operand -Wno-int-in-bool-context -Wno-non-pod-varargs -Wno-parentheses-equality -Wno-shadow -Wno-sign-compare -Wno-tautological-bitwise-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-vla-cxx-extension  -DVM_PREFIX_INCLUDE="<Vtb_mini_tpu.h>"   -DVL_TIME_CONTEXT   -std=gnu++20 -c -o verilated.o /opt/homebrew/Cellar/verilator/5.054/share/verilator/include/verilated.cpp
 warning: unknown warning option '-Wno-vla-cxx-extension'; did you mean '-Wno-vla-extension'? [-Wunknown-warning-option]
 1 warning generated.
@@ -51,5 +38,5 @@ warning: unknown warning option '-Wno-vla-cxx-extension'; did you mean '-Wno-vla
 c++  -Wl,-U,__Z15vl_time_stamp64v,-U,__Z13sc_time_stampv,-U,_vlog_startup_routines   verilated.o verilated_timing.o verilated_threads.o Vtb_mini_tpu__ALL.a    -pthread -lpthread   -o sim
 rm Vtb_mini_tpu__ALL.verilator_deplist.tmp
 - V e r i l a t i o n   R e p o r t: Verilator 5.054 2026-11-01 rev vUNKNOWN-built20261101
-- Verilator: Built from 0.318 MB sources in 18 modules, into 0.939 MB in 15 C++ files needing 0.000 MB
-- Verilator: Walltime 4.495 s (elab=0.012, cvt=0.061, bld=4.403); cpu 0.079 s on 1 threads; allocated 20.672 MB
+- Verilator: Built from 0.320 MB sources in 18 modules, into 0.935 MB in 15 C++ files needing 0.000 MB
+- Verilator: Walltime 4.630 s (elab=0.011, cvt=0.065, bld=4.531); cpu 0.082 s on 1 threads; allocated 20.141 MB

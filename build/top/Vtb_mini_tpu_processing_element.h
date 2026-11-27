@@ -21,14 +21,18 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_mini_tpu_processing_element final {
     ::CData/*0:0*/ __PVT__pipeline_register__DOT__skip_out;
     ::CData/*0:0*/ __PVT__u_mul__DOT__a_inf;
     ::CData/*0:0*/ __PVT__u_mul__DOT__b_inf;
-    ::CData/*0:0*/ __Vdfg_Regularize_474;
+    ::CData/*0:0*/ __Vdfg_Regularize_483;
+    ::SData/*15:0*/ a_out;
+    ::SData/*15:0*/ b_out;
     ::SData/*15:0*/ __PVT__u_mul__DOT__prod;
-    ::SData/*10:0*/ __Vdfg_Regularize_472;
-    ::SData/*9:0*/ __Vdfg_Regularize_477;
+    ::SData/*10:0*/ __Vdfg_Regularize_477;
+    ::SData/*10:0*/ __Vdfg_Regularize_479;
+    ::SData/*10:0*/ __Vdfg_Regularize_481;
+    ::SData/*9:0*/ __Vdfg_Regularize_486;
     ::IData/*31:0*/ __PVT__accumulator;
     ::IData/*31:0*/ __PVT__pipeline_register__DOT__out;
-    ::IData/*26:0*/ __Vdfg_Regularize_476;
-    ::IData/*31:0*/ __Vdly__accumulator_75;
+    ::IData/*26:0*/ __Vdfg_Regularize_485;
+    ::IData/*31:0*/ __Vdly__accumulator_51;
 
     // INTERNAL VARIABLES
     Vtb_mini_tpu__Syms* vlSymsp;

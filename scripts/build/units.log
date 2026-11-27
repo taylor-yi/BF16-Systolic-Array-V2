@@ -9,6 +9,6 @@
              build/units/tb/tb_units.sv.v
              build/units/tb/tb_units.sv.sv
         ... With current working directory '/Users/tayloryi/Documents/bf16-systolic-array-v2/scripts'
-%Error: Cannot find file containing module: 'rtl/bf16_mul.sv'
-%Error: Cannot find file containing module: 'rtl/fp32_add.sv'
+%Error: Cannot find file containing module: 'rtl/pipelined/bf16_mul.sv'
+%Error: Cannot find file containing module: 'rtl/pipelined/fp32_add.sv'
 %Error: Exiting due to 3 error(s)
