@@ -3,10 +3,11 @@
 Numeric behavior (matches the RTL):
   - BF16 inputs, subnormals treated as zero
   - exact BF16 x BF16 product in FP32
-  - FP32 accumulation in order k = 0..N-1, round toward zero, flush to zero,
+  - FP32 accumulation in order k = 0..K-1, round toward zero, flush to zero,
     overflow -> Inf
   - products with an exact-zero operand are skipped (accumulator holds)
-  - final FP32 -> BF16 by truncation
+  - v2 (matmul): final FP32 -> BF16 by truncation, square N x N inputs
+  - v3 (matmul_fp32): FP32 output, A is N x K and B is K x N
 """
 from fractions import Fraction
 
@@ -92,3 +93,21 @@ def dot(a_row, b_col):
 def matmul(A, B):
     n = len(A)
     return [[dot(A[i], [B[k][j] for k in range(n)]) for j in range(n)] for i in range(n)]
+
+
+# ---------------------------------------------------------------- v3
+# FP32 output and a reduction length K separate from the array size N.
+
+def dot_fp32(a_row, b_col):
+    """One output element: K products accumulated in order, FP32 bits out."""
+    acc = 0
+    for a, b in zip(a_row, b_col):
+        acc = mac(a, b, acc)
+    return acc
+
+
+def matmul_fp32(A, B):
+    """A is N x K, B is K x N (BF16 bits). Returns N x N FP32 bits."""
+    n, k = len(A), len(A[0])
+    assert len(B) == k and all(len(row) == n for row in B), "A must be N x K and B must be K x N"
+    return [[dot_fp32(A[i], [B[kk][j] for kk in range(k)]) for j in range(n)] for i in range(n)]
